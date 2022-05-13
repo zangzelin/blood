@@ -1,0 +1,568 @@
+[I 2022-03-22 20:24:08.062 ServerApp] jupyterlab | extension was successfully linked.
+[I 2022-03-22 20:24:08.189 ServerApp] nbclassic | extension was successfully linked.
+[I 2022-03-22 20:24:08.203 ServerApp] nbclassic | extension was successfully loaded.
+[I 2022-03-22 20:24:08.203 LabApp] JupyterLab extension loaded from /root/anaconda3/envs/fold/lib/python3.7/site-packages/jupyterlab
+[I 2022-03-22 20:24:08.203 LabApp] JupyterLab application directory is /root/anaconda3/envs/fold/share/jupyter/lab
+[I 2022-03-22 20:24:08.206 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2022-03-22 20:24:08.206 ServerApp] Serving notebooks from local directory: /home/home/root/code/blood
+[I 2022-03-22 20:24:08.206 ServerApp] Jupyter Server 1.13.5 is running at:
+[I 2022-03-22 20:24:08.207 ServerApp] http://localhost:8008/lab
+[I 2022-03-22 20:24:08.207 ServerApp]  or http://127.0.0.1:8008/lab
+[I 2022-03-22 20:24:08.207 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[C 2022-03-22 20:41:34.398 ServerApp] received signal 15, stopping
+[I 2022-03-22 20:41:34.399 ServerApp] Shutting down 2 extensions
+[I 2022-03-22 20:41:34.400 ServerApp] Shutting down 0 kernels
+[I 2022-03-22 20:41:34.400 ServerApp] Shutting down 0 terminals
+[I 2022-03-22 20:41:45.378 ServerApp] jupyterlab | extension was successfully linked.
+[I 2022-03-22 20:41:45.504 ServerApp] nbclassic | extension was successfully linked.
+[I 2022-03-22 20:41:45.518 ServerApp] nbclassic | extension was successfully loaded.
+[I 2022-03-22 20:41:45.519 LabApp] JupyterLab extension loaded from /root/anaconda3/envs/fold/lib/python3.7/site-packages/jupyterlab
+[I 2022-03-22 20:41:45.519 LabApp] JupyterLab application directory is /root/anaconda3/envs/fold/share/jupyter/lab
+[I 2022-03-22 20:41:45.522 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2022-03-22 20:41:45.522 ServerApp] Serving notebooks from local directory: /home/home/root/code/blood
+[I 2022-03-22 20:41:45.522 ServerApp] Jupyter Server 1.13.5 is running at:
+[I 2022-03-22 20:41:45.522 ServerApp] http://172.16.31.116:8008/lab
+[I 2022-03-22 20:41:45.522 ServerApp]  or http://127.0.0.1:8008/lab
+[I 2022-03-22 20:41:45.522 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[I 2022-03-22 20:41:53.770 LabApp] 302 GET /lab (172.16.31.50) 0.99ms
+[I 2022-03-22 20:41:58.706 ServerApp] 302 POST /login?next=%2Flab (172.16.31.50) 1.12ms
+[W 2022-03-22 20:42:00.764 LabApp] Could not determine jupyterlab build status without nodejs
+[I 2022-03-22 20:42:06.001 ServerApp] Writing notebook-signing key to /root/.local/share/jupyter/notebook_secret
+[W 2022-03-22 20:42:06.007 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-22 20:42:06.836 ServerApp] Kernel started: 899e4784-4da2-406e-a925-93addbcf6e35
+[I 2022-03-22 20:42:07.487 ServerApp] Starting buffering for 899e4784-4da2-406e-a925-93addbcf6e35:3795ca17-45fe-4b2d-a66b-44e0608a0492
+[I 2022-03-22 20:42:52.389 LabApp] 302 GET /lab (172.16.31.116) 0.61ms
+[I 2022-03-22 20:44:06.682 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-22 20:44:06.683 ServerApp] Notebook baseline.ipynb is not trusted
+[C 2022-03-22 21:33:11.263 ServerApp] received signal 15, stopping
+[I 2022-03-22 21:33:11.263 ServerApp] Shutting down 2 extensions
+[I 2022-03-22 21:33:11.264 ServerApp] Shutting down 1 kernel
+[I 2022-03-22 21:33:11.264 ServerApp] Kernel shutdown: 899e4784-4da2-406e-a925-93addbcf6e35
+[I 2022-03-22 21:33:11.477 ServerApp] Shutting down 0 terminals
+[I 2022-03-22 21:33:24.943 ServerApp] jupyter_server_mathjax | extension was successfully linked.
+[I 2022-03-22 21:33:24.951 ServerApp] jupyterlab | extension was successfully linked.
+[I 2022-03-22 21:33:25.200 ServerApp] nbclassic | extension was successfully linked.
+[I 2022-03-22 21:33:25.200 ServerApp] nbdime | extension was successfully linked.
+[I 2022-03-22 21:33:25.246 ServerApp] jupyter_server_mathjax | extension was successfully loaded.
+[I 2022-03-22 21:33:25.247 LabApp] JupyterLab extension loaded from /root/anaconda3/envs/blood/lib/python3.8/site-packages/jupyterlab
+[I 2022-03-22 21:33:25.247 LabApp] JupyterLab application directory is /root/anaconda3/envs/blood/share/jupyter/lab
+[I 2022-03-22 21:33:25.249 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2022-03-22 21:33:25.253 ServerApp] nbclassic | extension was successfully loaded.
+[I 2022-03-22 21:33:25.288 ServerApp] nbdime | extension was successfully loaded.
+[I 2022-03-22 21:33:25.288 ServerApp] Serving notebooks from local directory: /home/home/root/code/blood
+[I 2022-03-22 21:33:25.288 ServerApp] Jupyter Server 1.4.1 is running at:
+[I 2022-03-22 21:33:25.288 ServerApp] http://172.16.31.116:8008/lab
+[I 2022-03-22 21:33:25.288 ServerApp]  or http://127.0.0.1:8008/lab
+[I 2022-03-22 21:33:25.288 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[W 2022-03-22 21:33:33.568 ServerApp] 404 GET /api/kernels/899e4784-4da2-406e-a925-93addbcf6e35/channels?session_id=fb45cd69-8a0e-4d1a-ae4e-2205558d4f5a (172.16.31.50): Kernel does not exist: 899e4784-4da2-406e-a925-93addbcf6e35
+[W 2022-03-22 21:33:33.597 ServerApp] 404 GET /api/kernels/899e4784-4da2-406e-a925-93addbcf6e35/channels?session_id=fb45cd69-8a0e-4d1a-ae4e-2205558d4f5a (172.16.31.50) 31.79ms referer=None
+[W 2022-03-22 21:33:33.628 ServerApp] 404 GET /api/kernels/899e4784-4da2-406e-a925-93addbcf6e35/channels?session_id=df80bd4b-1615-4200-bfc8-5e142eb42300 (172.16.31.50): Kernel does not exist: 899e4784-4da2-406e-a925-93addbcf6e35
+[W 2022-03-22 21:33:33.629 ServerApp] 404 GET /api/kernels/899e4784-4da2-406e-a925-93addbcf6e35/channels?session_id=df80bd4b-1615-4200-bfc8-5e142eb42300 (172.16.31.50) 1.13ms referer=None
+[W 2022-03-22 21:33:35.246 LabApp] Could not determine jupyterlab build status without nodejs
+[W 2022-03-22 21:33:36.127 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-22 21:33:36.757 LabApp] 302 GET /lab (172.16.31.116) 0.42ms
+[I 2022-03-22 21:33:36.902 ServerApp] Kernel started: 474d5dd3-e452-499f-8418-5edbe9206a01
+[I 2022-03-22 21:35:36.785 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-22 21:35:36.786 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-22 22:58:33.866 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-22 22:58:33.867 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-22 23:00:35.886 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-22 23:00:35.887 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-22 23:06:09.096 ServerApp] Shutting down on /api/shutdown request.
+[I 2022-03-22 23:06:09.097 ServerApp] Shutting down 1 kernel
+[I 2022-03-22 23:06:09.098 ServerApp] Kernel shutdown: 474d5dd3-e452-499f-8418-5edbe9206a01
+[I 2022-03-22 23:06:15.740 ServerApp] jupyter_server_mathjax | extension was successfully linked.
+[I 2022-03-22 23:06:15.749 ServerApp] jupyterlab | extension was successfully linked.
+[I 2022-03-22 23:06:15.879 ServerApp] jupyter_nbextensions_configurator | extension was found and enabled by nbclassic. Consider moving the extension to Jupyter Server's extension paths.
+[I 2022-03-22 23:06:15.879 ServerApp] jupyter_nbextensions_configurator | extension was successfully linked.
+[I 2022-03-22 23:06:15.879 ServerApp] nbclassic | extension was successfully linked.
+[I 2022-03-22 23:06:15.879 ServerApp] nbdime | extension was successfully linked.
+[W 2022-03-22 23:06:15.915 ServerApp] jupyter_nbextensions_configurator | extension failed loading with message: 'nbextensions_path'
+[I 2022-03-22 23:06:15.916 ServerApp] jupyter_server_mathjax | extension was successfully loaded.
+[I 2022-03-22 23:06:15.917 LabApp] JupyterLab extension loaded from /root/anaconda3/envs/blood/lib/python3.8/site-packages/jupyterlab
+[I 2022-03-22 23:06:15.917 LabApp] JupyterLab application directory is /root/anaconda3/envs/blood/share/jupyter/lab
+[I 2022-03-22 23:06:15.919 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2022-03-22 23:06:15.922 ServerApp] nbclassic | extension was successfully loaded.
+[I 2022-03-22 23:06:15.956 ServerApp] nbdime | extension was successfully loaded.
+[I 2022-03-22 23:06:15.956 ServerApp] Serving notebooks from local directory: /home/home/root/code/blood
+[I 2022-03-22 23:06:15.956 ServerApp] Jupyter Server 1.4.1 is running at:
+[I 2022-03-22 23:06:15.957 ServerApp] http://172.16.31.116:8008/lab
+[I 2022-03-22 23:06:15.957 ServerApp]  or http://127.0.0.1:8008/lab
+[I 2022-03-22 23:06:15.957 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[W 2022-03-22 23:06:24.229 ServerApp] 404 GET /api/kernels/474d5dd3-e452-499f-8418-5edbe9206a01/channels?session_id=15555544-cc75-45fc-b01e-ba0a5620ba89 (172.16.31.50): Kernel does not exist: 474d5dd3-e452-499f-8418-5edbe9206a01
+[W 2022-03-22 23:06:24.236 ServerApp] 404 GET /api/kernels/474d5dd3-e452-499f-8418-5edbe9206a01/channels?session_id=15555544-cc75-45fc-b01e-ba0a5620ba89 (172.16.31.50) 10.43ms referer=None
+[W 2022-03-22 23:06:25.741 LabApp] Could not determine jupyterlab build status without nodejs
+[W 2022-03-22 23:06:25.929 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:25.934 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:25.957 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:25.961 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:25.972 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:25.978 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:25.990 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:25.997 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.019 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.023 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.102 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.107 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.146 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.166 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.176 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.188 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.206 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.266 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.319 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.325 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.349 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.353 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.363 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.370 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.383 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.390 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.412 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.415 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.495 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.499 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.537 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.556 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.565 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.577 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.594 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.650 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-22 23:06:26.869 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-22 23:06:27.904 ServerApp] Kernel started: 26a4a806-b1b8-4982-9185-09d102065512
+[I 2022-03-22 23:10:27.529 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-22 23:10:27.529 ServerApp] Notebook baseline.ipynb is not trusted
+[W 2022-03-22 23:28:58.285 ServerApp] WebSocket ping timeout after 119999 ms.
+[W 2022-03-22 23:28:58.300 ServerApp] WebSocket ping timeout after 119999 ms.
+[I 2022-03-22 23:29:03.302 ServerApp] Starting buffering for 26a4a806-b1b8-4982-9185-09d102065512:256f33cd-a7aa-4c8c-8fa8-43a3fbddcdfa
+[I 2022-03-23 00:22:32.921 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 00:22:32.921 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 00:23:49.218 ServerApp] Kernel restarted: 26a4a806-b1b8-4982-9185-09d102065512
+[I 2022-03-23 00:23:49.233 ServerApp] Discarding 3 buffered messages for 26a4a806-b1b8-4982-9185-09d102065512:256f33cd-a7aa-4c8c-8fa8-43a3fbddcdfa
+[I 2022-03-23 00:24:34.094 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 00:24:34.095 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 00:26:35.928 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 00:26:35.929 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 00:48:32.934 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 00:48:32.934 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 00:49:31.205 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 00:49:31.206 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 00:51:32.486 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 00:51:32.487 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 00:52:26.519 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 00:52:26.519 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 00:52:31.791 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 00:52:31.791 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 00:54:31.991 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 00:54:31.992 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 00:55:28.726 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 00:55:28.727 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 00:55:40.261 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 00:55:40.262 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 00:57:41.160 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 00:57:41.161 ServerApp] Notebook baseline.ipynb is not trusted
+[W 2022-03-23 00:59:31.060 ServerApp] Replacing stale connection: 26a4a806-b1b8-4982-9185-09d102065512:1bcb919a-267d-4e27-b6ef-da3e0ce6158b
+[I 2022-03-23 00:59:36.070 ServerApp] Starting buffering for 26a4a806-b1b8-4982-9185-09d102065512:1bcb919a-267d-4e27-b6ef-da3e0ce6158b
+[I 2022-03-23 00:59:36.071 ServerApp] Restoring connection for 26a4a806-b1b8-4982-9185-09d102065512:1bcb919a-267d-4e27-b6ef-da3e0ce6158b
+[I 2022-03-23 01:08:36.023 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 01:08:36.024 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 01:10:37.080 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 01:10:37.081 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 01:16:38.159 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 01:16:38.160 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 09:48:42.208 ServerApp] Starting buffering for 26a4a806-b1b8-4982-9185-09d102065512:1bcb919a-267d-4e27-b6ef-da3e0ce6158b
+[W 2022-03-23 11:03:25.133 LabApp] Could not determine jupyterlab build status without nodejs
+[W 2022-03-23 11:03:25.263 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.271 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.292 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.295 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.304 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.309 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.321 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.327 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.348 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.351 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.430 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.434 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.470 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.489 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.498 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.509 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.525 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.580 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.633 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.637 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.658 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.662 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.670 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.677 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.688 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.694 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.713 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.716 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.791 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.795 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.830 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.848 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.857 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.868 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.884 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:25.938 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-23 11:03:26.250 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 11:03:44.149 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 11:03:44.149 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 11:04:08.471 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 11:04:08.472 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 11:06:09.475 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 11:06:09.476 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 11:08:10.525 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 11:08:10.526 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 11:10:11.545 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 11:10:11.545 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 12:40:14.432 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 12:40:14.433 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 18:27:29.574 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 18:27:29.575 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:00:12.159 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:00:12.160 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:02:13.504 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:02:13.505 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:44:50.919 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:44:50.920 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:46:52.253 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:46:52.253 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:47:25.709 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:47:25.710 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:47:36.354 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:47:36.355 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:48:30.816 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:48:30.816 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:51:45.129 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:51:45.130 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:52:52.927 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:52:52.928 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:52:57.358 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:52:57.359 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:53:18.186 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:53:18.187 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:54:21.144 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:54:21.145 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:54:49.561 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:54:49.562 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:55:47.396 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:55:47.397 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:56:03.724 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:56:03.725 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:56:23.849 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:56:23.850 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:56:40.182 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:56:40.183 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:56:53.213 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:56:53.214 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:56:59.736 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:56:59.737 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 21:58:16.828 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 21:58:16.828 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-23 22:00:17.722 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-23 22:00:17.723 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:03:30.157 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:03:30.157 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:05:30.936 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:05:30.936 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:07:31.587 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:07:31.588 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:07:55.342 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:07:55.343 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:09:11.214 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:09:11.215 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:10:09.386 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:10:09.387 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:10:49.962 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:10:49.963 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:11:21.272 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:11:21.273 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:13:21.820 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:13:21.820 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:38:47.444 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:38:47.445 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:39:01.531 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:39:01.531 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:39:20.184 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:39:20.184 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:39:37.263 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:39:37.264 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:41:14.246 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:41:14.247 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:41:41.309 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:41:41.310 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:42:12.176 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:42:12.176 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:44:13.252 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:44:13.253 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:46:14.301 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:46:14.302 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:50:00.887 ServerApp] Kernel restarted: 26a4a806-b1b8-4982-9185-09d102065512
+[I 2022-03-24 00:50:00.890 ServerApp] Starting buffering for 26a4a806-b1b8-4982-9185-09d102065512:7f6c7e6e-59bd-44d9-99f9-6ebcccf8cf42
+[I 2022-03-24 00:50:00.896 ServerApp] Restoring connection for 26a4a806-b1b8-4982-9185-09d102065512:7f6c7e6e-59bd-44d9-99f9-6ebcccf8cf42
+[I 2022-03-24 00:50:15.368 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:50:15.368 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:52:16.429 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:52:16.430 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:54:17.420 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:54:17.421 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:55:47.190 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:55:47.191 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:55:55.497 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:55:55.497 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:56:53.355 ServerApp] Creating new notebook in 
+[I 2022-03-24 00:56:54.374 ServerApp] Kernel started: 3e0ce32b-8148-47eb-8042-5c4f2061bb03
+[I 2022-03-24 00:57:55.710 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:57:55.711 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:58:54.296 ServerApp] Saving file at /Untitled.ipynb
+[I 2022-03-24 00:59:29.912 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:59:29.913 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 00:59:40.485 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 00:59:40.486 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:01:41.512 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:01:41.513 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:02:05.433 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:02:05.434 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:02:50.426 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:02:50.427 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:03:26.736 ServerApp] Saving file at /Untitled.ipynb
+[I 2022-03-24 01:04:44.786 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:04:44.787 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:05:11.993 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:05:11.993 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:05:26.821 ServerApp] Saving file at /Untitled.ipynb
+[I 2022-03-24 01:05:28.887 ServerApp] Saving file at /Untitled.ipynb
+[I 2022-03-24 01:06:10.733 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:06:10.734 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:06:25.923 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:06:25.923 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:07:18.290 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:07:18.291 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:07:28.995 ServerApp] Saving file at /Untitled.ipynb
+[I 2022-03-24 01:07:31.295 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:07:31.296 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:08:08.571 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:08:08.572 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:08:47.314 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:08:47.314 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:09:32.246 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:09:32.246 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:09:35.141 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:09:35.142 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:09:50.456 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:09:50.457 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:10:05.834 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:10:05.834 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:10:14.202 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:10:14.202 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:10:17.431 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:10:17.432 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:10:19.226 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:10:19.227 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:10:29.051 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:10:29.052 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 01:12:30.800 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 01:12:30.801 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 09:51:24.254 ServerApp] Kernel restarted: 26a4a806-b1b8-4982-9185-09d102065512
+[I 2022-03-24 09:51:24.257 ServerApp] Starting buffering for 26a4a806-b1b8-4982-9185-09d102065512:7f6c7e6e-59bd-44d9-99f9-6ebcccf8cf42
+[I 2022-03-24 09:51:24.263 ServerApp] Restoring connection for 26a4a806-b1b8-4982-9185-09d102065512:7f6c7e6e-59bd-44d9-99f9-6ebcccf8cf42
+[I 2022-03-24 09:51:30.144 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 09:51:30.145 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 09:53:31.064 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 09:53:31.065 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 09:56:47.648 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 09:56:47.648 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 10:08:23.511 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 10:08:23.511 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 10:10:24.617 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 10:10:24.618 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 10:22:25.622 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 10:22:25.623 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 10:22:40.952 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 10:22:40.952 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 10:24:30.590 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 10:24:30.590 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 10:35:20.269 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 10:35:20.270 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 10:35:31.356 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 10:35:31.357 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 10:35:32.796 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 10:35:32.797 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 10:37:18.324 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 10:37:18.324 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 10:37:30.844 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 10:37:30.845 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 10:37:40.085 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 10:37:40.086 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 10:38:10.992 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 10:38:10.992 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 10:38:50.204 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 10:38:50.204 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 10:40:00.027 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 10:40:00.028 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 10:40:10.860 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 10:40:10.861 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 10:40:27.996 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 10:40:27.997 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 10:42:28.224 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 10:42:28.225 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 11:03:02.549 ServerApp] Starting buffering for 26a4a806-b1b8-4982-9185-09d102065512:7f6c7e6e-59bd-44d9-99f9-6ebcccf8cf42
+[I 2022-03-24 11:03:02.550 ServerApp] Starting buffering for 3e0ce32b-8148-47eb-8042-5c4f2061bb03:95dd48c3-6c88-4792-afab-bf1b45baa7d8
+[W 2022-03-24 11:03:23.136 LabApp] Could not determine jupyterlab build status without nodejs
+[I 2022-03-24 21:50:49.166 ServerApp] 302 GET / (172.20.0.21) 0.83ms
+[I 2022-03-24 21:50:49.177 LabApp] 302 GET /lab? (172.20.0.21) 0.57ms
+[I 2022-03-24 21:50:53.130 ServerApp] 302 POST /login?next=%2Flab%3F (172.20.0.21) 1.09ms
+[W 2022-03-24 21:50:59.049 LabApp] Could not determine jupyterlab build status without nodejs
+[W 2022-03-24 22:09:53.283 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.288 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.309 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.313 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.322 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.328 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.340 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.346 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.366 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.370 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.445 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.449 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.487 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.507 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.516 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.527 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.545 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.601 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.652 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.657 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.678 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.682 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.691 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.697 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.708 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.714 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.735 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.738 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.818 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.822 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.858 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.877 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.886 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.897 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.914 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:53.968 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-24 22:09:54.168 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 22:11:58.103 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 22:11:58.104 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 22:16:00.292 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 22:16:00.293 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 22:16:48.333 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 22:16:48.334 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 22:18:50.871 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 22:18:50.872 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 22:33:39.642 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 22:33:39.643 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 22:35:41.153 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 22:35:41.154 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 22:36:11.542 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 22:36:11.542 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 22:36:24.570 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 22:36:24.570 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 22:56:38.931 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-24 22:56:38.932 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-24 22:57:26.767 ServerApp] Starting buffering for 26a4a806-b1b8-4982-9185-09d102065512:e379743f-8453-4c8c-b12b-ca98731344c1
+[I 2022-03-24 22:57:26.767 ServerApp] Starting buffering for 3e0ce32b-8148-47eb-8042-5c4f2061bb03:80bac91f-e025-4f2d-9e8b-3dbb963d8f72
+[W 2022-03-25 11:06:18.872 LabApp] Could not determine jupyterlab build status without nodejs
+[W 2022-03-25 11:06:19.000 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.005 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.029 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.033 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.043 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.049 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.062 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.068 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.089 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.093 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.172 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.176 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.215 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.236 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.245 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.258 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.276 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.334 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.390 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.395 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.418 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.422 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.431 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.438 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.450 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.456 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.478 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.481 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.560 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.564 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.602 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.622 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.631 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.643 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.661 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:19.722 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-25 11:06:20.071 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-25 11:07:20.166 ServerApp] Starting buffering for 26a4a806-b1b8-4982-9185-09d102065512:78dfbdb5-0d3f-4d86-acc3-bbe7c7a02bc8
+[I 2022-03-25 21:48:08.634 LabApp] 302 GET /lab/tree/baseline.ipynb (172.20.0.37) 0.97ms
+[I 2022-03-31 23:10:44.988 ServerApp] 302 GET / (172.20.0.44) 79.34ms
+[I 2022-03-31 23:10:45.504 LabApp] 302 GET /lab? (172.20.0.44) 39.73ms
+[I 2022-03-31 23:10:49.129 ServerApp] 302 POST /login?next=%2Flab%3F (172.20.0.44) 156.54ms
+[W 2022-03-31 23:10:53.171 LabApp] Could not determine jupyterlab build status without nodejs
+[W 2022-03-31 23:10:53.485 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:53.557 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:53.583 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:53.587 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:53.617 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:53.624 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:53.638 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:53.647 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:53.677 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:53.680 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:53.802 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:53.806 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:53.848 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:53.870 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:53.881 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:53.894 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:53.914 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:53.977 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:54.032 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:54.037 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:54.063 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:54.067 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:54.079 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:54.085 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:54.099 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:54.106 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:54.129 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:54.133 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:54.216 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:54.220 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:54.260 ServerApp] Config option `template_path` not recognized by `ExporterCollapsibleHeadings`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:54.283 ServerApp] Config option `template_path` not recognized by `TocExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:54.294 ServerApp] Config option `template_path` not recognized by `LenvsHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:54.308 ServerApp] Config option `template_path` not recognized by `LenvsTocHTMLExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:54.328 ServerApp] Config option `template_path` not recognized by `LenvsLatexExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:54.393 ServerApp] Config option `template_path` not recognized by `LenvsSlidesExporter`.  Did you mean one of: `extra_template_paths, template_name, template_paths`?
+[W 2022-03-31 23:10:56.302 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-31 23:12:58.658 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-31 23:12:58.660 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-03-31 23:25:52.973 ServerApp] Saving file at /baseline.ipynb
+[W 2022-03-31 23:25:52.974 ServerApp] Notebook baseline.ipynb is not trusted
+[I 2022-04-02 23:27:35.568 ServerApp] Starting buffering for 3e0ce32b-8148-47eb-8042-5c4f2061bb03:7938028c-542e-4807-84a7-2efc0c988b91
+[I 2022-04-02 23:27:35.569 ServerApp] Starting buffering for 26a4a806-b1b8-4982-9185-09d102065512:d679a83d-2c60-4d7d-ba03-b4f044c12a51
+[I 2022-04-03 23:01:33.522 LabApp] 302 GET /lab/tree/baseline.ipynb (172.20.0.5) 478.32ms
+[C 2022-04-16 09:50:58.822 ServerApp] received signal 15, stopping
+[I 2022-04-16 09:51:00.093 ServerApp] Shutting down 2 kernels
+[I 2022-04-16 09:51:03.814 ServerApp] Kernel shutdown: 26a4a806-b1b8-4982-9185-09d102065512
+[I 2022-04-16 09:51:05.562 ServerApp] Kernel shutdown: 3e0ce32b-8148-47eb-8042-5c4f2061bb03
