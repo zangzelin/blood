@@ -18,3 +18,7 @@ parameters:
         'xgboost',
         'bagging',
   ]
+  p1_index:
+    values: [0,1,2,3]
+  p2_index:
+    values: [0,1,2,3,4]

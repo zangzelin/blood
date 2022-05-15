@@ -663,9 +663,14 @@ def main(args):
     #     tags=[args.__dict__['data_name'], args.__dict__['method']],
     #     config=args,
     # )
+    if args.method == 'KNN':
+        n_neighbors_list = [5,10,20,25]
+        leaf_size_list = [15,20,25,30,35]
+        n_neighbors = n_neighbors_list[args.p1_index]
+        leaf_size = leaf_size_list[args.p2_index]
 
     refs = {
-            'KNN': (neighbors.KNeighborsRegressor(n_neighbors=3), neighbors.KNeighborsClassifier(n_neighbors=3)),
+            'KNN': (neighbors.KNeighborsRegressor(n_neighbors=3), neighbors.KNeighborsClassifier(n_neighbors=n_neighbors, leaf_size=leaf_size)),
             'LR': (linear_model.LinearRegression(), linear_model.LogisticRegression(penalty='l2', random_state=1)),
             'random_forest': (RandomForestRegressor(n_estimators=50, random_state=1), RandomForestClassifier(n_estimators=50, random_state=1)),
             'decision_tree': (tree.DecisionTreeRegressor(random_state=1), tree.DecisionTreeClassifier(random_state=1)),
