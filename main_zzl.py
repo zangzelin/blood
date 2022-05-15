@@ -323,7 +323,7 @@ class DMT_Model(pl.LightningModule):
 
     def configure_optimizers(self):
 
-        optimizer = torch.optim.AdamW(self.parameters(), lr=self.learning_rate, weight_decay=1e-4)
+        optimizer = torch.optim.AdamW(self.parameters(), lr=self.learning_rate, weight_decay=self.hparams.weight_decay)
         self.scheduler = StepLR(optimizer, step_size=self.hparams.epochs // 10, gamma=0.5)
 
         return [optimizer], [self.scheduler]
@@ -456,7 +456,7 @@ def main(args):
         args=args,
         gpus=1,
         max_epochs=args.epochs,
-        progress_bar_refresh_rate=10,
+        progress_bar_refresh_rate=0,
         # check_val_every_n_epoch=args.log_interval,
         logger=False,
         # callbacks=[early_stopping]
@@ -488,6 +488,9 @@ if __name__ == "__main__":
     parser.add_argument('--method', type=str, default='dmt',
                         choices=['dmt', 'dmt_mask'])
     parser.add_argument('--foldindex', type=int, default=0)
+    parser.add_argument('--weight_decay', type=float, default=1e-4)
+
+
 
     parser.add_argument('--scale', type=int, default=30)
     parser.add_argument('--vs', type=float, default=1e-2)
