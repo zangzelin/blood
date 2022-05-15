@@ -248,7 +248,7 @@ class DMT_Model(pl.LightningModule):
 
         }
         # print(self.wandb_logs)
-        wandb.log(self.wandb_logs)
+        # wandb.log(self.wandb_logs)
 
         # if self.hparams.NetworkStructure[-1] >2:
         #     loss += torch.mean(lat1[:, 2:]) * self.l_shadular.Getnu(self.current_epoch)
@@ -387,7 +387,7 @@ class DMT_Model(pl.LightningModule):
                     self.wandb_logs['visualize/val_embdeing{}'.format(str(i))] = px.scatter_3d(
                         x=latent[:, 0], y=latent[:, 1], z=latent[:, 2], color=np.array(self.labelstr[i])[index])
 
-            wandb.log(self.wandb_logs)
+            # wandb.log(self.wandb_logs)
 
     def test_step(self, batch, batch_idx):
         # print("batchsize: {}, shape:{}".format(batch.shape[0] , self.data_train.datatest.shape[0]))
@@ -653,16 +653,16 @@ def main(args):
         **args.__dict__,
     )
 
-    wandb.init(
-        name=runname,
-        project="DSML_Blood",
-        entity="zangzelin",
-        mode='offline' if bool(args.__dict__['offline']) else 'online',
-        save_code=True,
-        # log_model=False,
-        tags=[args.__dict__['data_name'], args.__dict__['method']],
-        config=args,
-    )
+    # wandb.init(
+    #     name=runname,
+    #     project="DSML_Blood",
+    #     entity="zangzelin",
+    #     mode='offline' if bool(args.__dict__['offline']) else 'online',
+    #     save_code=True,
+    #     # log_model=False,
+    #     tags=[args.__dict__['data_name'], args.__dict__['method']],
+    #     config=args,
+    # )
 
     refs = {
             'KNN': (neighbors.KNeighborsRegressor(n_neighbors=3), neighbors.KNeighborsClassifier(n_neighbors=3)),
@@ -702,12 +702,16 @@ def main(args):
     test_score = metrics.accuracy_score(test_predict, test_label)
     test_auc = metrics.auc(test_fpr, test_tpr)
 
-    wandb.log({
+    log_dict = {
+        'train_acc': val_score,
+        'train_auc': val_auc,
         'val_acc': val_score,
         'test_acc': test_score,
         'val_auc': val_auc,
         'test_auc': test_auc,
-    })
+    }
+    return log_dict
+    # wandb.log()
 
 
 if __name__ == "__main__":

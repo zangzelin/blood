@@ -1,4 +1,4 @@
-program: main_zzl.py
+program: warper_zzl.py
 method: grid
 metric:
   goal: maximize
@@ -25,24 +25,12 @@ parameters:
     - 0.5
   K:
     values:
-    - 3
-    - 5
-    - 10
-    - 15
-    - 20
-    - 25
     - 30
-  foldindex:
-    values:
-    - 0
-    - 1
-    - 2
-    - 3
-    - 4
+    - 25
+    - 20
+    - 15
+    - 10
     - 5
-    - 6
-    - 7
-    - 8
-    - 9
+    - 3
   lr:
     values: [1e-3, 1e-2, 1e-1, 5e-3, 5e-2, 5e-1, 2e-3, 2e-2, 2e-1]

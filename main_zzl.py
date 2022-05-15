@@ -19,7 +19,7 @@ import Similarity.sim_Gaussian_1 as Sim_use
 import Loss.dmt_loss_old as Loss_use
 import Loss.dmt_loss_nearfar as Loss_use_mask
 import nuscheduler
-import wandb
+# import wandb
 import eval.eval_core as eval_core
 import plotly.express as px
 import matplotlib.pylab as plt
@@ -234,7 +234,7 @@ class DMT_Model(pl.LightningModule):
             # 'visualize/train_valembdeing' : px.scatter(x=lattest[:, 0], y=lattest[:, 1], color=np.array(label))
         }
         # print(self.wandb_logs)
-        wandb.log(self.wandb_logs)
+        # wandb.log(self.wandb_logs)
 
         # if self.hparams.NetworkStructure[-1] >2:
         #     loss += torch.mean(lat1[:, 2:]) * self.l_shadular.Getnu(self.current_epoch)
@@ -243,77 +243,83 @@ class DMT_Model(pl.LightningModule):
 
     def validation_step(self, batch, batch_idx):
         # print("batchsize: {}, shape:{}".format(batch.shape[0] , self.data_train.datatest.shape[0]))
-        index = batch if batch.shape[0] < self.data_val.dataval.shape[0] else torch.Tensor(range(self.data_val.dataval.shape[0])).long()
-        # print(batch, torch.Tensor(range(self.data_val.dataval.shape[0])).long())
+        # index = batch if batch.shape[0] < self.data_val.dataval.shape[0] else torch.Tensor(range(self.data_val.dataval.shape[0])).long()
+        # # print(batch, torch.Tensor(range(self.data_val.dataval.shape[0])).long())
 
-        # print(index)
-        data1 = self.data_val.dataval[index].to(self.device)
-        # data2 = self.aug_near_mix(index, self.data_val, stage="val", k=self.hparams.K).to(self.device)
-        # data2 = self.data_val.data[index]
-        # rho = self.data_val.rho[index]
-        # sigma = self.data_val.sigma[index]
-        label1 = np.array(self.data_val.labelval)
-        ind = index.cpu()
-        ind = ind.numpy()
-        label1 = label1[ind]
-        # label2 = np.array(self.data_val.labelval)[index.cpu().numpy()]
-        # latent = self.model(data)
-        mid1, lat1 = self(data1)
-        # mid2, lat2 = self(data2)
+        # # print(index)
+        # data1 = self.data_val.dataval[index].to(self.device)
+        # # data2 = self.aug_near_mix(index, self.data_val, stage="val", k=self.hparams.K).to(self.device)
+        # # data2 = self.data_val.data[index]
+        # # rho = self.data_val.rho[index]
+        # # sigma = self.data_val.sigma[index]
+        # label1 = np.array(self.data_val.labelval)
+        # ind = index.cpu()
+        # ind = ind.numpy()
+        # label1 = label1[ind]
+        # # label2 = np.array(self.data_val.labelval)[index.cpu().numpy()]
+        # # latent = self.model(data)
+        # mid1, lat1 = self(data1)
+        # # mid2, lat2 = self(data2)
 
-        # data = torch.cat([mid1, mid2]).to(self.device)
-        # lat = torch.cat([lat1, lat2]).to(self.device)
-        # label = torch.cat([label1, label2]).to(self.device)
-        data = mid1.to(self.device)
-        lat = lat1.to(self.device)
-        label = torch.Tensor(label1).to(self.device)
-
-        return (
-            data,
-            lat,
-            # lat2.detach().cpu().numpy(),
-            label,
-            index,
-        )
+        # # data = torch.cat([mid1, mid2]).to(self.device)
+        # # lat = torch.cat([lat1, lat2]).to(self.device)
+        # # label = torch.cat([label1, label2]).to(self.device)
+        # data = mid1.to(self.device)
+        # lat = lat1.to(self.device)
+        # label = torch.Tensor(label1).to(self.device)
+        pass
+        # return (
+        #     data,
+        #     lat,
+        #     # lat2.detach().cpu().numpy(),
+        #     label,
+        #     index,
+        # )
 
     def validation_epoch_end(self, outputs):
 
-        train_data = self.train_dataset.data.cpu().numpy()
-        train_data = self.train_dataset.data.to(self.device)
-        val_data = self.train_dataset.dataval.to(self.device)
-        test_data = self.train_dataset.datatest.to(self.device)
-        train_label = self.train_dataset.label.cpu().numpy().astype(np.int32)
-        val_label = self.train_dataset.labelval.cpu().numpy().astype(np.int32)
-        test_label = self.train_dataset.labeltest.cpu().numpy().astype(np.int32)
+        if self.current_epoch == (self.hparams.epochs - 1):
 
-        train_lat, train_emb = train_predict = self(train_data)
-        val_lat, val_emb = val_predict = self(val_data)
-        test_lat, test_emb = val_predict = self(test_data)
+            train_data = self.train_dataset.data.cpu().numpy()
+            train_data = self.train_dataset.data.to(self.device)
+            val_data = self.train_dataset.dataval.to(self.device)
+            test_data = self.train_dataset.datatest.to(self.device)
+            train_label = self.train_dataset.label.cpu().numpy().astype(np.int32)
+            val_label = self.train_dataset.labelval.cpu().numpy().astype(np.int32)
+            test_label = self.train_dataset.labeltest.cpu().numpy().astype(np.int32)
 
-        train_predict = (train_emb[:, 0] < train_emb[:, 1]).cpu().numpy().astype(int)
-        val_predict = (val_emb[:, 0] < val_emb[:, 1]).cpu().numpy().astype(int)
-        test_predict = (test_emb[:, 0] < test_emb[:, 1]).cpu().numpy().astype(int)
+            train_lat, train_emb = train_predict = self(train_data)
+            val_lat, val_emb = val_predict = self(val_data)
+            test_lat, test_emb = val_predict = self(test_data)
 
-        train_fpr, train_tpr, thresholds = metrics.roc_curve(train_predict, train_label)
-        train_score = metrics.accuracy_score(train_predict, train_label)
-        train_auc = metrics.auc(train_fpr, train_tpr)
+            train_predict = (train_emb[:, 0] < train_emb[:, 1]).cpu().numpy().astype(int)
+            val_predict = (val_emb[:, 0] < val_emb[:, 1]).cpu().numpy().astype(int)
+            test_predict = (test_emb[:, 0] < test_emb[:, 1]).cpu().numpy().astype(int)
 
-        val_fpr, val_tpr, thresholds = metrics.roc_curve(val_predict, val_label)
-        val_score = metrics.accuracy_score(val_predict, val_label)
-        val_auc = metrics.auc(val_fpr, val_tpr)
-        
-        test_fpr, test_tpr, thresholds = metrics.roc_curve(test_predict, test_label)
-        test_score = metrics.accuracy_score(test_predict, test_label)
-        test_auc = metrics.auc(test_fpr, test_tpr)
+            train_fpr, train_tpr, thresholds = metrics.roc_curve(train_predict, train_label)
+            train_score = metrics.accuracy_score(train_predict, train_label)
+            train_auc = metrics.auc(train_fpr, train_tpr)
 
-        wandb.log({
-            'train_acc': train_score,
-            'val_acc': val_score,
-            'test_acc': test_score,
-            'train_auc': train_auc,
-            'val_auc': val_auc,
-            'test_auc': test_auc,
-        })
+            val_fpr, val_tpr, thresholds = metrics.roc_curve(val_predict, val_label)
+            val_score = metrics.accuracy_score(val_predict, val_label)
+            val_auc = metrics.auc(val_fpr, val_tpr)
+            
+            test_fpr, test_tpr, thresholds = metrics.roc_curve(test_predict, test_label)
+            test_score = metrics.accuracy_score(test_predict, test_label)
+            test_auc = metrics.auc(test_fpr, test_tpr)
+
+            self.log_dict = {
+                'train_acc': train_score,
+                'val_acc': val_score,
+                'test_acc': test_score,
+                'train_auc': train_auc,
+                'val_auc': val_auc,
+                'test_auc': test_auc,
+            }
+
+            # wandb.log(self.log_dict)
+        else:
+            pass
 
     def configure_optimizers(self):
 
@@ -426,16 +432,16 @@ def main(args):
         **args.__dict__,
     )
 
-    wandb.init(
-        name=runname,
-        project="DSML_Blood",
-        entity="zangzelin",
-        mode='offline' if bool(args.__dict__['offline']) else 'online',
-        save_code=True,
-        # log_model=False,
-        tags=[args.__dict__['data_name'], args.__dict__['method']],
-        config=args,
-    )
+    # wandb.init(
+    #     name=runname,
+    #     project="DSML_Blood",
+    #     entity="zangzelin",
+    #     mode='offline' if bool(args.__dict__['offline']) else 'online',
+    #     save_code=True,
+    #     # log_model=False,
+    #     tags=[args.__dict__['data_name'], args.__dict__['method']],
+    #     config=args,
+    # )
 
     model = DMT_Model(
         DistanceF=disfunc_use,
@@ -456,6 +462,8 @@ def main(args):
         # callbacks=[early_stopping]
     )
     trainer.fit(model)
+
+    return model.log_dict
     # trainer.test(model)
 
 

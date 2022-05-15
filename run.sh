@@ -10,14 +10,16 @@
 # python baseline.py --knn_neighbors 10 &
 # python baseline.py --knn_neighbors 11 &
 # python baseline.py --knn_neighbors 12 &
-CUDA_VISIBLE_DEVICES=1 wandb agent zangzelin/bloodcenter_zzl/1vk8z9vd &
-CUDA_VISIBLE_DEVICES=1 wandb agent zangzelin/bloodcenter_zzl/1vk8z9vd &
-# CUDA_VISIBLE_DEVICES=1 wandb agent zangzelin/bloodcenter_zzl/1vk8z9vd &
-# CUDA_VISIBLE_DEVICES=1 wandb agent zangzelin/bloodcenter_zzl/1vk8z9vd &
-CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/1vk8z9vd &
-CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/1vk8z9vd &
-# CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/1vk8z9vd &
-# CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/1vk8z9vd
+CUDA_VISIBLE_DEVICES=1 wandb agent zangzelin/bloodcenter_zzl/03dkzo9w &
+CUDA_VISIBLE_DEVICES=1 wandb agent zangzelin/bloodcenter_zzl/03dkzo9w &
+CUDA_VISIBLE_DEVICES=1 wandb agent zangzelin/bloodcenter_zzl/03dkzo9w &
+# CUDA_VISIBLE_DEVICES=1 wandb agent zangzelin/bloodcenter_zzl/03dkzo9w &
+# CUDA_VISIBLE_DEVICES=1 wandb agent zangzelin/bloodcenter_zzl/03dkzo9w &
+CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/03dkzo9w &
+CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/03dkzo9w &
+CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/03dkzo9w 
+# CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/03dkzo9w &
+# CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/03dkzo9w
 
 # echo "Device ID:" $1
 # CUDA_VISIBLE_DEVICES=$1 python main.py --foldindex $[ $1*5+0 ] &&
