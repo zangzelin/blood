@@ -278,242 +278,42 @@ class DMT_Model(pl.LightningModule):
 
     def validation_epoch_end(self, outputs):
 
-        # print('self..current_epoch',self.current_epoch)
-        if (self.current_epoch + 1) % self.log_interval == 0:
+        train_data = self.train_dataset.data.cpu().numpy()
+        train_data = self.train_dataset.data.to(self.device)
+        val_data = self.train_dataset.dataval.to(self.device)
+        test_data = self.train_dataset.datatest.to(self.device)
+        train_label = self.train_dataset.label.cpu().numpy().astype(np.int32)
+        val_label = self.train_dataset.labelval.cpu().numpy().astype(np.int32)
+        test_label = self.train_dataset.labeltest.cpu().numpy().astype(np.int32)
 
-            data = torch.cat([data_item[0] for data_item in outputs])
-            latent = torch.cat([data_item[1] for data_item in outputs])
-            # latent2 = np.concatenate([data_item[2] for data_item in outputs])
-            label = torch.cat([data_item[2] for data_item in outputs])
-            index = torch.cat([data_item[3] for data_item in outputs])
+        train_lat, train_emb = train_predict = self(train_data)
+        val_lat, val_emb = val_predict = self(val_data)
+        test_lat, test_emb = val_predict = self(test_data)
 
-            e = eval_core.Eval(
-                input=data,
-                latent=latent,
-                label=label,
-                k=10)
+        train_predict = (train_emb[:, 0] < train_emb[:, 1]).cpu().numpy().astype(int)
+        val_predict = (val_emb[:, 0] < val_emb[:, 1]).cpu().numpy().astype(int)
+        test_predict = (test_emb[:, 0] < test_emb[:, 1]).cpu().numpy().astype(int)
 
-            # dataval = self.data_val.dataval
-            # midval, latval = self(dataval.to(self.device))
-            # labelval = self.data_val.labelval.astype(np.int32)
+        train_fpr, train_tpr, thresholds = metrics.roc_curve(train_predict, train_label)
+        train_score = metrics.accuracy_score(train_predict, train_label)
+        train_auc = metrics.auc(train_fpr, train_tpr)
 
-            # latval = latent
+        val_fpr, val_tpr, thresholds = metrics.roc_curve(val_predict, val_label)
+        val_score = metrics.accuracy_score(val_predict, val_label)
+        val_auc = metrics.auc(val_fpr, val_tpr)
+        
+        test_fpr, test_tpr, thresholds = metrics.roc_curve(test_predict, test_label)
+        test_score = metrics.accuracy_score(test_predict, test_label)
+        test_auc = metrics.auc(test_fpr, test_tpr)
 
-
-            loss = self.Loss(
-                input_data=data.reshape(data.shape[0], -1),
-                latent_data=latent.reshape(data.shape[0], -1),
-                rho=0.0,  # torch.cat([rho, rho]),
-                sigma=1.0,  # torch.cat([sigma, sigma]),
-                v_latent=self.nushadular.Getnu(self.current_epoch),
-            )
-            loss_ce = self.celoss(latent, label.long())
-            total_loss = loss + loss_ce / self.hparams.scale
-
-            lattest = nn.Softmax(dim=1)(latent).cpu().numpy()
-            predictint = lattest[:, 1].copy()
-            predictint[predictint > 0.5] = 1
-            predictint[predictint <= 0.5] = 0
-
-            label = label.cpu().numpy()
-            latent = latent.cpu().numpy()
-
-            try:
-                self.wandb_logs.update({
-                    'val_loss': loss,
-                    'val_loss_ce': loss_ce,
-                    'val_total_loss': total_loss,
-                    # 'epoch': self.current_epoch,
-                    # 'foldindex': self.test_dataset.foldindex,
-                    'metric/val_auc': metrics.roc_auc_score(label, latent[:, 1]),
-                    'metric/val_acc': metrics.accuracy_score(label, predictint)
-                })
-                # self.val_wandb_logs = {
-                #     'val_loss': loss,
-                #     'val_loss_ce': loss_ce,
-                #     'val_total_loss': total_loss,
-                #     'epoch': self.current_epoch,
-                #     # 'foldindex': self.test_dataset.foldindex,
-                #     'metric/val_auc': metrics.roc_auc_score(label, latent[:, 1]),
-                #     'metric/val_acc': metrics.accuracy_score(label, predictint)
-                # }
-            except ValueError as e:
-                print("error: ", repr(e))
-
-            # e = eval_core.Eval(
-            #     input=data,
-            #     latent=latent,
-            #     label=label,
-            #     k=10
-            #     )
-            # self.wandb_logs['metric/AccSvc_dimall'] = e.E_Classifacation_SVC()
-
-            # for i in range(len(self.labelstr)):
-
-            #     if latent.shape[1] == 2:
-            #         self.wandb_logs['visualize/val_embdeing{}'.format(str(i))] = px.scatter(
-            #             x=latent[:, 0], y=latent[:, 1], color=np.array(self.labelstr[i])[index])
-            #         self.wandb_logs['visualize/val_valembdeing{}'.format(str(i))] = px.scatter(
-            #             x=lattest[:, 0], y=lattest[:, 1], color=np.array(label))
-
-            #     elif latent.shape[1] == 3:
-            #         self.wandb_logs['visualize/val_embdeing{}'.format(str(i))] = px.scatter_3d(
-            #             x=latent[:, 0], y=latent[:, 1], z=latent[:, 2], color=np.array(self.labelstr[i])[index])
-
-            # wandb.log(self.wandb_logs)
-
-    def test_step(self, batch, batch_idx):
-        # print("batchsize: {}, shape:{}".format(batch.shape[0] , self.data_train.datatest.shape[0]))
-        index = batch if batch.shape[0] < self.data_test.datatest.shape[0] else torch.Tensor(range(self.data_test.datatest.shape[0])).long().to(self.device)
-
-        # print(index)
-        data = self.data_test.datatest[index].to(self.device)
-        # data2 = self.aug_near_mix(index, self.data_test, k=self.hparams.K).to(self.device)
-        # data2 = self.data_test.data[index]
-        # rho = self.data_test.rho[index]
-        # sigma = self.data_test.sigma[index]
-        label1 = np.array(self.data_test.labeltest)[index.cpu().numpy()]
-        # latent = self.model(data)
-        mid1, lat1 = self(data)
-        # mid2, lat2 = self(data2)
-
-        data = mid1.to(self.device)
-        lat = lat1.to(self.device)
-        label = torch.Tensor(label1).to(self.device)
-
-        return (
-            data,
-            lat,
-            # lat2.detach().cpu().numpy(),
-            label,
-            index,
-        )
-
-    def test_epoch_end(self, outputs):
-
-        # print('self.current_epoch',self.current_epoch)
-        if (self.current_epoch + 1) % self.log_interval == 0:
-
-            # data = np.concatenate([data_item[0] for data_item in outputs])
-            # latent = np.concatenate([data_item[1] for data_item in outputs])
-            # # latent2 = np.concatenate([data_item[2] for data_item in outputs])
-            # label = np.concatenate([data_item[2] for data_item in outputs])
-            # index = np.concatenate([data_item[3] for data_item in outputs])
-
-            data = torch.cat([data_item[0] for data_item in outputs])
-            latent = torch.cat([data_item[1] for data_item in outputs])
-            # latent2 = np.concatenate([data_item[2] for data_item in outputs])
-            label = torch.cat([data_item[2] for data_item in outputs])
-            index = torch.cat([data_item[3] for data_item in outputs])
-
-            e = eval_core.Eval(
-                input=data,
-                latent=latent,
-                label=label,
-                k=10)
-
-            # datatest = self.data_test.datatest
-            # midtest, lattest = self(datatest.to(self.device))
-            # labeltest = self.data_test.labeltest.astype(np.int32)
-
-            # lattest = nn.Softmax()(torch.Tensor(latent))
-            # lattest = lattest.cpu().numpy()
-
-            # predictint = lattest[:, 1].clone()
-            # predictint[predictint > 0.5] = 1
-            # predictint[predictint <= 0.5] = 0
-            # if self.path_list == None:
-            # fpr, tpr, thresholds = metrics.roc_curve(
-            #     lattest[:,0], labeltest
-            #     )
-
-            lattest = nn.Softmax(dim=1)(latent).cpu().numpy()
-            predictint = lattest[:, 1].copy()
-            predictint[predictint > 0.5] = 1
-            predictint[predictint <= 0.5] = 0
-
-            label = label.cpu().numpy()
-            latent = latent.cpu().numpy()
-
-            # now = os.path.join(f"{args.scale}_{args.vs}_{args.K}", datetime.now().strftime("%Y-%m-%d-%H:%M:%S") + f"_{args.foldindex}_{args.data_name}")
-            # if not os.path.exists(f"log/{now}/visualize"):
-            #     os.makedirs(f"log/{now}/visualize")
-
-            try:
-                self.wandb_logs.update({
-                    # 'epoch': self.current_epoch,
-                    # 'foldindex': self.test_dataset.foldindex,
-                    'metric/test_auc': metrics.roc_auc_score(label, latent[:, 1]),
-                    'metric/test_acc': metrics.accuracy_score(label, predictint)
-                    # 'metric/Mrremean': np.mean(e.E_mrre()),
-                    # 'metric/Continuity': e.E_continuity(),
-                    # 'metric/Trustworthiness':e.E_trustworthiness(),
-                    # 'metric/Pearson': e.E_Rscore(),
-                    # 'SVC':e.E_Classifacation_SVC(),
-                    # 'Curance':e.E_Curance("SwissRoll" in self.hparams.data_name),
-                    # 'Curance_2':e.E_Curance_2("SwissRoll" in self.hparams.data_name),
-                    # 'Kmeans':e.E_Clasting_Kmeans(),
-                    # 'metric/Dismatcher':e.E_Dismatcher(),
-                })
-                # with open(f"log/{now}/test.log", 'w') as f:
-                #     f.write(str(result))
-                #     f.write("\n")
-                #     f.write(str(self.wandb_logs))
-            except Exception as e:
-                print(repr(e))
-                print(label)
-                print(latent)
-                print(predictint)
-
-            # e = eval_core.Eval(
-            #     input=data,
-            #     latent=latent,
-            #     label=label,
-            #     k=10
-            #     )
-            # self.wandb_logs['metric/AccSvc_dimall'] = e.E_Classifacation_SVC()
-
-            for i in range(len(self.labelstr)):
-
-                # if self.hparams.plotInput == 1:
-                #     self.hparams.plotInput = 0
-                #     if latent.shape[1] == 3:
-                #         self.wandb_logs['visualize/Inputembdeing{}'.format(str(i))] = px.scatter_3d(
-                #             x=data[:, 0], y=data[:, 1], z=data[:, 2],
-                #             color=np.array(self.labelstr[i])[index],
-                #             color_continuous_scale='speed'
-                #         )
-
-                if latent.shape[1] == 2:
-                    self.wandb_logs['visualize/test_embdeing{}'.format(str(i))] = px.scatter(x=latent[:, 0], y=latent[:, 1], color=np.array(self.labelstr[i])[index.cpu()])
-                    self.wandb_logs['visualize/test_valembdeing{}'.format(str(i))] = px.scatter(x=lattest[:, 0], y=lattest[:, 1], color=np.array(label))
-                    # img.write_image(f"log/{now}/visualize/embdeing{str(i)}_{self.current_epoch}.png", engine="kaleido")
-                    # img.write_image(f"log/{now}/visualize/testembdeing{str(i)}_{self.current_epoch}.png", engine="kaleido")
-                    # self.wandb_logs['visualize/embdeing{}'.format(str(i))] = px.scatter(
-                    #     x=latent[:, 0], y=latent[:, 1], color=np.array(self.labelstr[i])[index])
-                    # self.wandb_logs['visualize/testembdeing{}'.format(str(i))] = px.scatter(
-                    #     x=lattest[:, 0], y=lattest[:, 1], color=np.array(labeltest))
-
-                elif latent.shape[1] == 3:
-                    self.wandb_logs['visualize/embdeing{}'.format(str(i))] = px.scatter_3d(
-                        x=latent[:, 0], y=latent[:, 1], z=latent[:, 2], color=np.array(self.labelstr[i])[index])
-                # df = pd.concat(
-                #     [
-                #         pd.DataFrame(latent, columns=['x','y']),
-                #         pd.DataFrame(np.array(self.labelstr[i])[index], columns=['label'])],
-                #         axis=1
-                #     )
-                # df.to_csv('tem/metadata_{}.csv'.format(self.current_epoch))
-                # wandb.save('tem/metadata_{}.csv'.format(self.current_epoch))
-
-            # if self.hparams.show_detail:
-            #     self.wandb_logs['data/p'] = px.imshow(self.P)
-            #     self.wandb_logs['data/q'] = px.imshow(self.Q)
-            #     self.wandb_logs['data/disq'] = px.imshow(self.dis_Q)
-            #     self.wandb_logs['data/select_index_near'] = px.imshow(self.P > 0.5)
-            #     self.wandb_logs['data/select_index_far'] = px.imshow(self.P < 1e-9)
-
-            # wandb.log(self.wandb_logs)
+        wandb.log({
+            'train_acc': train_score,
+            'val_acc': val_score,
+            'test_acc': test_score,
+            'train_auc': train_auc,
+            'val_auc': val_auc,
+            'test_auc': test_auc,
+        })
 
     def configure_optimizers(self):
 
@@ -666,31 +466,7 @@ if __name__ == "__main__":
     parser.add_argument('--name', type=str, default='digits_T', )
 
     # data set param
-    parser.add_argument('--data_name', type=str, default='BlodNNull',
-                        # choices=[
-                        #     # 'Digits', 'Coil20', 'Coil100',
-                        #     # 'Smile', 'ToyDiff', 'SwissRoll',
-                        #     # 'KMnist', 'EMnist', 'Mnist',
-                        #     # 'EMnistBC', 'EMnistBYCLASS',
-                        #     # 'Cifar10', 'Colon',
-                        #     # 'Gast10k', 'HCL60K', 'PBMC',
-                        #     # 'HCL280K', 'SAMUSIK',
-                        #     # 'M_handwritten', 'Seversphere',
-                        #     # 'MCA', 'Activity', 'SwissRoll2',
-                        #     # 'PeiHuman', 'BlodZHEER', 'BlodAll'
-                        #     'BlodNoMissing',]
-                        )
-    # parser.add_argument('--n_point', type=int, default=60000000, )
-    # model param
-    # parser.add_argument('--same_sigma', type=bool, default=False)
-    # parser.add_argument('--show_detail', type=bool, default=False)
-    # parser.add_argument('--plotInput', type=int, default=0)
-    # parser.add_argument('--eta', type=float, default=0)
-    # parser.add_argument('--NetworkStructure', type=list, default=[-1, 5000, 4000, 3000, 2000, 1000, 2])
-    # parser.add_argument('--pow_input', type=float, default=2)
-    # parser.add_argument('--pow_latent', type=float, default=2)
-    # parser.add_argument('--near_bound', type=float, default=0.0)
-    # parser.add_argument('--far_bound', type=float, default=1.0)
+    parser.add_argument('--data_name', type=str, default='BlodNNull',)
 
     parser.add_argument('--metric', type=str, default="euclidean", )
     parser.add_argument('--v_input', type=float, default=100)

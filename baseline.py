@@ -106,7 +106,8 @@ def traditionWay(refs: dict, data, label):
             ax2 = fig2.add_subplot(rows, 2, cnt)
         for i, (train_index, test_index) in enumerate(skf.split(X_train, y_train)):
             if v[1] is not None:
-                ac_cl, test_ac_cl, au_cl, test_au_cl, test_fpr, test_tpr, test_pre, test_rec = try_different_method_clf(v[1], X_train[train_index], y_train[train_index], X_train[test_index], y_train[test_index], X_test, y_test, cnt)
+                ac_cl, test_ac_cl, au_cl, test_au_cl, test_fpr, test_tpr, test_pre, test_rec = try_different_method_clf(
+                    v[1], X_train[train_index], y_train[train_index], X_train[test_index], y_train[test_index], X_test, y_test, cnt)
 
                 acc_cl.append(ac_cl)
                 test_acc_cl.append(test_ac_cl)
@@ -196,9 +197,9 @@ if __name__ == '__main__':
         nNull, missing, fillWithMean, fillWithMiddle, fillWithKNN,
     ) = preprocess(knn_neighbors=args.knn_neighbors, ifNorm=args.if_norm, preSave=True)
 
-    # data, label = nNull['data'], nNull['label']
+    data, label = nNull['data'], nNull['label']
     # tl = "Not Null"
-    data, label = fillWithMean['data'], fillWithMean['label']
+    # data, label = fillWithMean['data'], fillWithMean['label']
     tl = "Fill With Mean"
     # data, label = fillWithMiddle['data'], fillWithMiddle['label']
     # tl = "Fill With Middle"

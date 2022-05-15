@@ -1,0 +1,32 @@
+program: baseline_zzl.py
+method: grid
+metric:
+  goal: maximize
+  name: metric/acc
+parameters:
+  method:
+    values: [
+        'KNN',
+        'LR',
+        'random_forest',
+        'decision_tree',
+        'extra_tree',
+        'svm',
+        'gradient_boost',
+        'adaboost',
+        'lightGBM',
+        'xgboost',
+        'bagging',
+  ]
+  foldindex:
+    values:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9

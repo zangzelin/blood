@@ -24,7 +24,6 @@ import eval.eval_core as eval_core
 import plotly.express as px
 import matplotlib.pylab as plt
 import pandas as pd
-from sklearn import metrics
 
 import load_data_f.dataset as datasetfunc
 import load_disF.disfunc as disfunc
@@ -32,6 +31,20 @@ import load_simF.simfunc as simfunc
 import sys
 import git
 from sklearn import metrics
+
+from datetime import date
+import pandas as pd
+import numpy as np
+from sklearn.base import ClassifierMixin, RegressorMixin
+from sklearn.metrics import accuracy_score
+from sklearn import tree, svm, neighbors, linear_model, metrics
+from sklearn.ensemble import BaggingClassifier, AdaBoostClassifier, RandomForestClassifier, GradientBoostingClassifier
+from sklearn.ensemble import BaggingRegressor, AdaBoostRegressor, RandomForestRegressor, GradientBoostingRegressor
+from sklearn.model_selection import KFold, GridSearchCV, StratifiedKFold, train_test_split
+from sklearn.metrics import mean_squared_error, precision_recall_curve, average_precision_score
+from xgboost import XGBClassifier, XGBRegressor, DMatrix, plot_importance
+import lightgbm as lgb
+import time
 
 # import networkx as nx
 import random
@@ -230,8 +243,9 @@ class DMT_Model(pl.LightningModule):
             'lr': self.trainer.optimizers[0].param_groups[0]['lr'],
             'dimention_loss': self.l_shadular.Getnu(self.current_epoch),
             'epoch': self.current_epoch,
-            # 'visualize/train_embdeing': px.scatter(x=lat1[:, 0].cpu().detach().numpy(), y=lat1[:, 1].cpu().detach().numpy(), color=label1.cpu().detach().numpy())
+            'visualize/train_embdeing': px.scatter(x=lat1[:, 0].cpu().detach().numpy(), y=lat1[:, 1].cpu().detach().numpy(), color=label1.cpu().detach().numpy())
             # 'visualize/train_valembdeing' : px.scatter(x=lattest[:, 0], y=lattest[:, 1], color=np.array(label))
+
         }
         # print(self.wandb_logs)
         wandb.log(self.wandb_logs)
@@ -299,6 +313,10 @@ class DMT_Model(pl.LightningModule):
 
             # latval = latent
 
+            from sklearn import metrics
+            # fpr, tpr, thresholds = metrics.roc_curve(
+            #     latval[:,0], labelval
+            #     )
 
             loss = self.Loss(
                 input_data=data.reshape(data.shape[0], -1),
@@ -348,19 +366,28 @@ class DMT_Model(pl.LightningModule):
             #     )
             # self.wandb_logs['metric/AccSvc_dimall'] = e.E_Classifacation_SVC()
 
-            # for i in range(len(self.labelstr)):
+            for i in range(len(self.labelstr)):
 
-            #     if latent.shape[1] == 2:
-            #         self.wandb_logs['visualize/val_embdeing{}'.format(str(i))] = px.scatter(
-            #             x=latent[:, 0], y=latent[:, 1], color=np.array(self.labelstr[i])[index])
-            #         self.wandb_logs['visualize/val_valembdeing{}'.format(str(i))] = px.scatter(
-            #             x=lattest[:, 0], y=lattest[:, 1], color=np.array(label))
+                # if self.hparams.plotInput == 1:
+                #     self.hparams.plotInput = 0
+                #     if latent.shape[1] == 3:
+                #         self.val_wandb_logs['visualize/val_Inputembdeing{}'.format(str(i))] = px.scatter_3d(
+                #             x=data[:, 0], y=data[:, 1], z=data[:, 2],
+                #             color=np.array(self.labelstr[i])[index],
+                #             color_continuous_scale='speed'
+                #         )
 
-            #     elif latent.shape[1] == 3:
-            #         self.wandb_logs['visualize/val_embdeing{}'.format(str(i))] = px.scatter_3d(
-            #             x=latent[:, 0], y=latent[:, 1], z=latent[:, 2], color=np.array(self.labelstr[i])[index])
+                if latent.shape[1] == 2:
+                    self.wandb_logs['visualize/val_embdeing{}'.format(str(i))] = px.scatter(
+                        x=latent[:, 0], y=latent[:, 1], color=np.array(self.labelstr[i])[index])
+                    self.wandb_logs['visualize/val_valembdeing{}'.format(str(i))] = px.scatter(
+                        x=lattest[:, 0], y=lattest[:, 1], color=np.array(label))
 
-            # wandb.log(self.wandb_logs)
+                elif latent.shape[1] == 3:
+                    self.wandb_logs['visualize/val_embdeing{}'.format(str(i))] = px.scatter_3d(
+                        x=latent[:, 0], y=latent[:, 1], z=latent[:, 2], color=np.array(self.labelstr[i])[index])
+
+            wandb.log(self.wandb_logs)
 
     def test_step(self, batch, batch_idx):
         # print("batchsize: {}, shape:{}".format(batch.shape[0] , self.data_train.datatest.shape[0]))
@@ -637,26 +664,50 @@ def main(args):
         config=args,
     )
 
-    model = DMT_Model(
-        DistanceF=disfunc_use,
-        SimilarityF=simfunc_use,
-        dataset=dataset,
-        **args.__dict__,
-    )
+    refs = {
+            'KNN': (neighbors.KNeighborsRegressor(n_neighbors=3), neighbors.KNeighborsClassifier(n_neighbors=3)),
+            'LR': (linear_model.LinearRegression(), linear_model.LogisticRegression(penalty='l2', random_state=1)),
+            'random_forest': (RandomForestRegressor(n_estimators=50, random_state=1), RandomForestClassifier(n_estimators=50, random_state=1)),
+            'decision_tree': (tree.DecisionTreeRegressor(random_state=1), tree.DecisionTreeClassifier(random_state=1)),
+            'extra_tree': (tree.ExtraTreeRegressor(random_state=1), tree.ExtraTreeClassifier(random_state=1)),
+            'svm': (svm.SVR(), svm.SVC(random_state=1)),
+            'gradient_boost': (GradientBoostingRegressor(n_estimators=50, learning_rate=1.0, max_depth=1, random_state=1), GradientBoostingClassifier(n_estimators=50, learning_rate=1.0, max_depth=1, random_state=1)),
+            'adaboost': (AdaBoostRegressor(n_estimators=50, random_state=1), AdaBoostClassifier(n_estimators=50, random_state=1)),
+            'lightGBM': (lgb.LGBMRegressor(random_state=1), lgb.LGBMClassifier(random_state=1)),
+            'xgboost': (XGBRegressor(verbosity=0), XGBClassifier(verbosity=0, use_label_encoder=False)),
+            'bagging': (BaggingRegressor(verbose=0, random_state=1), BaggingClassifier(verbose=0, random_state=1))
+        }
 
-    # early_stopping = EarlyStopping('total_loss', patience=50)
-    trainer = pl.Trainer.from_argparse_args(
-        default_root_dir="checkpoints/1",
-        args=args,
-        gpus=1,
-        max_epochs=args.epochs,
-        progress_bar_refresh_rate=10,
-        # check_val_every_n_epoch=args.log_interval,
-        logger=False,
-        # callbacks=[early_stopping]
-    )
-    trainer.fit(model)
-    # trainer.test(model)
+    train_data = dataset.data.cpu().numpy()
+    val_data = dataset.dataval.cpu().numpy()
+    test_data = dataset.datatest.cpu().numpy()
+    train_label = dataset.label.cpu().numpy().astype(np.int32)
+    val_label = dataset.labelval.cpu().numpy().astype(np.int32)
+    test_label = dataset.labeltest.cpu().numpy().astype(np.int32)
+
+    clf = refs[args.method][1]
+    clf.fit(train_data, train_label)
+
+    val_predict = clf.predict(val_data)
+    val_predict[val_predict<0.5] = 0
+    val_predict[val_predict>0.5] = 1
+    val_fpr, val_tpr, thresholds = metrics.roc_curve(val_predict, val_label)
+    val_score = metrics.accuracy_score(val_predict, val_label)
+    val_auc = metrics.auc(val_fpr, val_tpr)
+    
+    test_predict = clf.predict(test_data)
+    test_predict[test_predict<0.5] = 0
+    test_predict[test_predict>0.5] = 1
+    test_fpr, test_tpr, thresholds = metrics.roc_curve(test_predict, test_label)
+    test_score = metrics.accuracy_score(test_predict, test_label)
+    test_auc = metrics.auc(test_fpr, test_tpr)
+
+    wandb.log({
+        'val_acc': val_score,
+        'test_acc': test_score,
+        'val_auc': val_auc,
+        'test_auc': test_auc,
+    })
 
 
 if __name__ == "__main__":
@@ -693,6 +744,19 @@ if __name__ == "__main__":
     # parser.add_argument('--far_bound', type=float, default=1.0)
 
     parser.add_argument('--metric', type=str, default="euclidean", )
+    parser.add_argument('--method', type=str, default="KNN", choices=[
+        'KNN',
+        'LR',
+        'random_forest',
+        'decision_tree',
+        'extra_tree',
+        'svm',
+        'gradient_boost',
+        'adaboost',
+        'lightGBM',
+        'xgboost',
+        'bagging',
+    ])
     parser.add_argument('--v_input', type=float, default=100)
     parser.add_argument('--perplexity', type=int, default=20)
     parser.add_argument('--NetworkStructure_1', type=list, default=[-1, 500, 300, 80])
@@ -701,8 +765,8 @@ if __name__ == "__main__":
     parser.add_argument('--model_type', type=str, default='mlp')
     parser.add_argument('--augNearRate', type=float, default=100)
     parser.add_argument('--offline', type=int, default=0)
-    parser.add_argument('--method', type=str, default='dmt',
-                        choices=['dmt', 'dmt_mask'])
+    # parser.add_argument('--method', type=str, default='dmt',
+    #                     choices=['dmt', 'dmt_mask'])
     parser.add_argument('--foldindex', type=int, default=0)
 
     parser.add_argument('--scale', type=int, default=30)
