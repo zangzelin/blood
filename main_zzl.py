@@ -442,7 +442,7 @@ def main(args):
     #     tags=[args.__dict__['data_name'], args.__dict__['method']],
     #     config=args,
     # )
-
+    callbacks_list = []
     model = DMT_Model(
         DistanceF=disfunc_use,
         SimilarityF=simfunc_use,
@@ -452,13 +452,15 @@ def main(args):
 
     # early_stopping = EarlyStopping('total_loss', patience=50)
     trainer = pl.Trainer.from_argparse_args(
-        default_root_dir="checkpoints/1",
+        # default_root_dir="checkpoints/1",
         args=args,
         gpus=1,
         max_epochs=args.epochs,
         progress_bar_refresh_rate=0,
         # check_val_every_n_epoch=args.log_interval,
         logger=False,
+        callbacks=callbacks_list,
+        checkpoint_callback=False,
         # callbacks=[early_stopping]
     )
     trainer.fit(model)

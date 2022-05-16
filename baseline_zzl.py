@@ -42,7 +42,7 @@ from sklearn.ensemble import BaggingClassifier, AdaBoostClassifier, RandomForest
 from sklearn.ensemble import BaggingRegressor, AdaBoostRegressor, RandomForestRegressor, GradientBoostingRegressor
 from sklearn.model_selection import KFold, GridSearchCV, StratifiedKFold, train_test_split
 from sklearn.metrics import mean_squared_error, precision_recall_curve, average_precision_score
-from xgboost import XGBClassifier, XGBRegressor, DMatrix, plot_importance
+# from xgboost import XGBClassifier, XGBRegressor, DMatrix, plot_importance
 import lightgbm as lgb
 import time
 
