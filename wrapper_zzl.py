@@ -123,9 +123,12 @@ if __name__ == "__main__":
     parser.add_argument('--model_type', type=str, default='mlp')
     parser.add_argument('--augNearRate', type=float, default=100)
     parser.add_argument('--offline', type=int, default=0)
+    parser.add_argument('--p1_index', type=int, default=0)
+    parser.add_argument('--p2_index', type=int, default=0)
     # parser.add_argument('--method', type=str, default='dmt',
     #                     choices=['dmt', 'dmt_mask'])
     parser.add_argument('--foldindex', type=int, default=0)
+    parser.add_argument('--weight_decay', type=float, default=1e-4)
 
     parser.add_argument('--scale', type=int, default=30)
     parser.add_argument('--vs', type=float, default=1e-2)
