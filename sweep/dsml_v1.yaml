@@ -1,28 +1,9 @@
-program: warper_zzl.py
 method: grid
 metric:
   goal: maximize
   name: metric/acc
+name: DSMLv1.1
 parameters:
-  scale:
-    values:
-    - 10
-    - 20
-    - 30
-    - 40
-    - 50
-    - 60
-  vs:
-    values:
-    - 0.001
-    - 0.002
-    - 0.005
-    - 0.01
-    - 0.02
-    - 0.05
-    - 0.1
-    - 0.2
-    - 0.5
   K:
     values:
     - 30
@@ -31,6 +12,33 @@ parameters:
     - 15
     - 10
     - 5
-    - 3
+  augNearRate:
+    values:
+    - 100
+    - 1000
+    - 10000
+    - 10000
   lr:
-    values: [1e-3, 1e-2, 1e-1, 5e-3, 5e-2, 5e-1, 2e-3, 2e-2, 2e-1]
+    values:
+    - 0.001
+    - 0.002
+    - 0.005
+    - 0.01
+    - 0.02
+  scale:
+    values:
+    - 90
+    - 100
+    - 150
+    - 200
+  vs:
+    values:
+    - 0.0005
+    - 0.001
+    - 0.002
+    - 0.005
+  weight_decay:
+    values:
+    - 0.0001
+    - 0.001
+program: wrapper_zzl.py

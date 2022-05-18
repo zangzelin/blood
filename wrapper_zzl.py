@@ -129,6 +129,9 @@ if __name__ == "__main__":
     #                     choices=['dmt', 'dmt_mask'])
     parser.add_argument('--foldindex', type=int, default=0)
     parser.add_argument('--weight_decay', type=float, default=1e-4)
+    parser.add_argument('--fill_set', type=str, default='nNull', choices=[
+        'nNull', 'fillWithMean', 'fillWithMiddle', 'fillWithKNN',
+    ])
 
     parser.add_argument('--scale', type=int, default=30)
     parser.add_argument('--vs', type=float, default=1e-2)

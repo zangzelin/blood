@@ -36,7 +36,18 @@ class BlodNoMissingDataModule(Source.Source):
             nNull, missing, fillWithMean, fillWithMiddle, fillWithKNN,
         ) = preprocess(knn_neighbors=2, ifNorm=True, preSave=True)
 
-        data, label = nNull['data'], nNull['label']
+        if self.fill_set == 'nNull':
+            data, label = nNull['data'], nNull['label']
+            print("data, label = nNull['data'], nNull['label']")
+        elif self.fill_set == 'fillWithMiddle':
+            data, label = fillWithMiddle['data'], fillWithMiddle['label']
+            print("data, label = fillWithMiddle['data'], fillWithMiddle['label']")
+        elif self.fill_set == 'fillWithKNN':
+            data, label = fillWithKNN['data'], fillWithKNN['label']
+            print("data, label = fillWithKNN['data'], fillWithKNN['label']")
+        elif self.fill_set == 'fillWithMean':
+            data, label = fillWithMean['data'], fillWithMean['label']
+            print("data, label = fillWithMean['data'], fillWithMean['label']")
         tl = "Not Null"
         # data, label = fillWithMean['data'], fillWithMean['label']
         # tl = "Fill With Mean"

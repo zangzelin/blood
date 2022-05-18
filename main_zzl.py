@@ -72,9 +72,9 @@ class DMT_Model(pl.LightningModule):
         #     )
         self.model, self.model2, self.model3 = self.InitNetworkMLP(self.hparams.NetworkStructure_1, self.hparams.NetworkStructure_2)
         # print(self.hparams.NetworkStructure)
-        print(self.model)
-        print(self.model2)
-        print(self.model3)
+        # print(self.model)
+        # print(self.model2)
+        # print(self.model3)
         # if self.hparams.method == 'dmt':
         self.Loss = dmt_loss_aug.MyLoss(
             v_input=self.hparams.v_input,
@@ -485,14 +485,13 @@ if __name__ == "__main__":
     parser.add_argument('--NetworkStructure_2', type=list, default=[-1, 500, 80])
     parser.add_argument('--num_latent_dim', type=int, default=2)
     parser.add_argument('--model_type', type=str, default='mlp')
+    parser.add_argument('--fill_set', type=str, default='nNull')
     parser.add_argument('--augNearRate', type=float, default=100)
     parser.add_argument('--offline', type=int, default=0)
     parser.add_argument('--method', type=str, default='dmt',
                         choices=['dmt', 'dmt_mask'])
     parser.add_argument('--foldindex', type=int, default=0)
     parser.add_argument('--weight_decay', type=float, default=1e-4)
-
-
 
     parser.add_argument('--scale', type=int, default=30)
     parser.add_argument('--vs', type=float, default=1e-2)
@@ -509,6 +508,6 @@ if __name__ == "__main__":
 
     args = pl.Trainer.add_argparse_args(parser)
     args = args.parse_args()
-    print(args.foldindex)
+    # print(args.foldindex)
     # os.environ['CUDA_VISIBLE_DEVICES'] = "0" if args.foldindex < 5 else "1"
     main(args)
