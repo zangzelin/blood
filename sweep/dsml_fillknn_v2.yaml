@@ -1,9 +1,9 @@
-method: grid
 program: wrapper_zzl.py
+method: grid
+name: DSMLv1.2
 metric:
   goal: maximize
   name: metric/acc
-name: DSMLv1.3_label
 parameters:
   K:
     values:
@@ -12,30 +12,32 @@ parameters:
     - 80
     - 50
     - 30
+    - 10
   augNearRate:
     values:
     - 1000
-    - 10000
   lr:
     values:
+    - 0.0001
+    - 0.0005
     - 0.001
     - 0.005
-    - 0.01
-    - 0.02
   scale:
     values:
+    - 40
+    - 60
     - 90
     - 100
-    - 120
-    - 150
     - 200
     - 250
+    - 300
   vs:
     values:
-    - 0.005
-    - 0.01
     - 0.02
     - 0.04
+    - 0.06
+    - 0.08
+    - 0.1
   weight_decay:
     values:
     - 0.01
@@ -46,8 +48,11 @@ parameters:
     - 5
   epochs:
     values:
-    - 100
+    # - 100
     - 200
+    - 400
   uselabel:
     values:
     - 1
+  fill_set:
+    values: [fillWithKNN]
