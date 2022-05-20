@@ -1,4 +1,5 @@
 method: grid
+program: wrapper_zzl.py
 metric:
   goal: maximize
   name: metric/acc
@@ -8,37 +9,34 @@ parameters:
     values:
     - 30
     - 25
-    - 20
-    - 15
     - 10
-    - 5
   augNearRate:
     values:
-    - 100
     - 1000
-    - 10000
-    - 10000
   lr:
+    values:
+    - 0.005
+    - 0.01
+    - 0.02
+    - 0.05
+    - 0.1
+  scale:
+    values:
+    - 90
+    - 95
+    - 100
+    - 110
+    - 120
+  vs:
     values:
     - 0.001
     - 0.002
     - 0.005
     - 0.01
     - 0.02
-  scale:
-    values:
-    - 90
-    - 100
-    - 150
-    - 200
-  vs:
-    values:
-    - 0.0005
-    - 0.001
-    - 0.002
-    - 0.005
   weight_decay:
     values:
     - 0.0001
     - 0.001
-program: wrapper_zzl.py
+    - 0.01
+    - 0.1

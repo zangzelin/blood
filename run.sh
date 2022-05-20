@@ -10,37 +10,60 @@
 # python baseline.py --knn_neighbors 10 &
 # python baseline.py --knn_neighbors 11 &
 # python baseline.py --knn_neighbors 12 &
-CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=1 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=2 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=3 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=4 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=5 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=6 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=7 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
+CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+sleep 4s
+CUDA_VISIBLE_DEVICES=1 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+sleep 4s
+CUDA_VISIBLE_DEVICES=2 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+sleep 4s
+CUDA_VISIBLE_DEVICES=3 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+sleep 4s
+CUDA_VISIBLE_DEVICES=4 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+sleep 4s
+CUDA_VISIBLE_DEVICES=5 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+sleep 4s
+CUDA_VISIBLE_DEVICES=6 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+sleep 4s
+CUDA_VISIBLE_DEVICES=7 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
 
-CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=1 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=2 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=3 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=4 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=5 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=6 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=7 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
+sleep 4s
+CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+sleep 4s
+CUDA_VISIBLE_DEVICES=1 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+sleep 4s
+CUDA_VISIBLE_DEVICES=2 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+sleep 4s
+CUDA_VISIBLE_DEVICES=3 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+sleep 4s
+CUDA_VISIBLE_DEVICES=4 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+sleep 4s
+CUDA_VISIBLE_DEVICES=5 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+sleep 4s
+CUDA_VISIBLE_DEVICES=6 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+sleep 4s
+CUDA_VISIBLE_DEVICES=7 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+sleep 4s
 
-CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=1 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=2 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=3 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=4 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=5 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=6 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-CUDA_VISIBLE_DEVICES=7 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
+# CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+# CUDA_VISIBLE_DEVICES=1 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+# CUDA_VISIBLE_DEVICES=2 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+# CUDA_VISIBLE_DEVICES=3 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+# CUDA_VISIBLE_DEVICES=4 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+# CUDA_VISIBLE_DEVICES=5 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+# CUDA_VISIBLE_DEVICES=6 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+# CUDA_VISIBLE_DEVICES=7 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
 
+# CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+# CUDA_VISIBLE_DEVICES=1 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+# CUDA_VISIBLE_DEVICES=2 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+# CUDA_VISIBLE_DEVICES=3 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+# CUDA_VISIBLE_DEVICES=4 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+# CUDA_VISIBLE_DEVICES=5 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+# CUDA_VISIBLE_DEVICES=6 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+# CUDA_VISIBLE_DEVICES=7 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
 
-
-# CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/r19zdusk &
-# CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/r19zdusk
+# CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/wg25kto9 &
+# CUDA_VISIBLE_DEVICES=0 wandb agent zangzelin/bloodcenter_zzl/wg25kto9
 
 # echo "Device ID:" $1
 # CUDA_VISIBLE_DEVICES=$1 python main.py --foldindex $[ $1*5+0 ] &&

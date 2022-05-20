@@ -493,12 +493,12 @@ if __name__ == "__main__":
                         choices=['dmt', 'dmt_mask'])
     parser.add_argument('--foldindex', type=int, default=0)
     parser.add_argument('--weight_decay', type=float, default=1e-4)
-    parser.add_argument("--uselabel", type=int, default=0)
 
     parser.add_argument('--scale', type=int, default=30)
     parser.add_argument('--vs', type=float, default=1e-2)
     parser.add_argument('--ve', type=float, default=-1)
     parser.add_argument('--K', type=int, default=15)
+    parser.add_argument("--uselabel", type=int, default=0)
 
     # train param
     parser.add_argument('--batch_size', type=int, default=2000, )

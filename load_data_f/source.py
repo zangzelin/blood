@@ -12,7 +12,7 @@ from pynndescent import NNDescent
 
 class Source(torch.utils.data.Dataset):
 
-    def __init__(self, DistanceF, SimilarityF, SimilarityNPF, foldindex, fill_set, jumpPretreatment=False, **kwargs):
+    def __init__(self, DistanceF, SimilarityF, SimilarityNPF, foldindex, fill_set, uselabel, jumpPretreatment=False, **kwargs):
         self.args = kwargs
         self.DistanceF = DistanceF
         self.SimilarityF = SimilarityF
@@ -31,17 +31,38 @@ class Source(torch.utils.data.Dataset):
         #     self.args['pow_input'],
         #     self.args['n_point'],
         # )
-        X_rshaped = self.data.reshape((self.data.shape[0], -1))
-        index = NNDescent(X_rshaped, n_jobs=-1, metric=self.args['metric'])
-        self.neighbors_index, neighbors_dist = index.query(X_rshaped, k=self.args['K'])
-        self.neighbors_index = torch.tensor(self.neighbors_index).cuda()
-        self.data = self.data.reshape((self.data.shape[0], -1)).cuda()
+        if uselabel == 1:
+            print('----------------------------------')
+            print('use label find the neighbor')
+            print('----------------------------------')
+            X_rshaped = self.data.reshape((self.data.shape[0], -1))
+            # index = NNDescent(X_rshaped, n_jobs=-1, metric=self.args['metric'])
+            # self.neighbors_index, neighbors_dist = index.query(X_rshaped, k=self.args['K'])
+            dis = pairwise_distances(X_rshaped)
+            M = np.repeat(self.label.reshape(1, -1), X_rshaped.shape[0], axis=0)
+            dis[(M - M.T) != 0] = dis.max() + 1
+            neighbors_index = dis.argsort(axis=1)[:, 1: self.args['K'] + 1]
+            self.neighbors_index = torch.tensor(neighbors_index).cuda()
+            self.data = self.data.reshape((self.data.shape[0], -1)).cuda()
 
-        X_rshapedval = self.dataval.reshape((self.dataval.shape[0], -1))
-        indexval = NNDescent(X_rshapedval, n_jobs=-1, metric=self.args['metric'])
-        self.neighbors_index_val, neighbors_distval = indexval.query(X_rshapedval, k=self.args['K'])
-        self.neighbors_index_val = torch.tensor(self.neighbors_index_val)
-        self.dataval = self.dataval.reshape((self.dataval.shape[0], -1)).cuda()
+            # X_rshapedval = self.dataval.reshape((self.dataval.shape[0], -1))
+            # indexval = NNDescent(X_rshapedval, n_jobs=-1, metric=self.args['metric'])
+            # self.neighbors_index_val, neighbors_distval = indexval.query(X_rshapedval, k=self.args['K'])
+            # self.neighbors_index_val = torch.tensor(self.neighbors_index_val)
+            self.dataval = self.dataval.reshape((self.dataval.shape[0], -1)).cuda()        
+
+        else:
+            X_rshaped = self.data.reshape((self.data.shape[0], -1))
+            index = NNDescent(X_rshaped, n_jobs=-1, metric=self.args['metric'])
+            self.neighbors_index, neighbors_dist = index.query(X_rshaped, k=self.args['K'])
+            self.neighbors_index = torch.tensor(self.neighbors_index).cuda()
+            self.data = self.data.reshape((self.data.shape[0], -1)).cuda()
+
+            X_rshapedval = self.dataval.reshape((self.dataval.shape[0], -1))
+            indexval = NNDescent(X_rshapedval, n_jobs=-1, metric=self.args['metric'])
+            self.neighbors_index_val, neighbors_distval = indexval.query(X_rshapedval, k=self.args['K'])
+            self.neighbors_index_val = torch.tensor(self.neighbors_index_val)
+            self.dataval = self.dataval.reshape((self.dataval.shape[0], -1)).cuda()
 
         # if not os.path.exists('save/'+filename):
         # self._Pretreatment()
