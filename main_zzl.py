@@ -457,11 +457,11 @@ def main(args):
         args=args,
         gpus=1,
         max_epochs=args.epochs,
-        progress_bar_refresh_rate=0,
-        # check_val_every_n_epoch=args.log_interval,
         logger=False,
         callbacks=callbacks_list,
-        checkpoint_callback=False,
+        enable_progress_bar=False,
+        enable_checkpointing=False,
+        enable_model_summary=False,
         # callbacks=[early_stopping]
     )
     trainer.fit(model)
