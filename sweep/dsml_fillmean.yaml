@@ -3,7 +3,7 @@ method: grid
 name: DSMLv1.2
 metric:
   goal: maximize
-  name: metric/acc
+  name: best_test_auc
 parameters:
   K:
     values:
