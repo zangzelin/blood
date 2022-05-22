@@ -5,7 +5,7 @@ import wandb
 import sys
 import os
 import pytorch_lightning as pl
-
+import pandas as pd
 def warper(args):
     
     info = [str(s) for s in sys.argv[1:]]
@@ -51,14 +51,22 @@ def warper(args):
     best_test_acc = test_acc_list[index]
     best_test_auc = test_auc_list[index]
 
+    indexs = ['fold_{}'.format(i) for i in range(len(train_acc_list))]
+
     wandb.log({
         'best_index': index,
-        'train_acc_list': train_acc_list,
-        'train_auc_list': train_auc_list,
-        'val_acc_list': val_acc_list,
-        'val_auc_list': val_auc_list,
-        'test_acc_list': test_acc_list,
-        'test_auc_list': test_auc_list,
+        'train_acc_list': wandb.Table(data=pd.DataFrame(
+            train_acc_list, index=indexs, columns=['train_acc'])),
+        'train_auc_list': wandb.Table(data=pd.DataFrame(
+            train_auc_list, index=indexs, columns=['train_auc'])),
+        'val_acc_list': wandb.Table(data=pd.DataFrame(
+            val_acc_list, index=indexs, columns=['val_acc'])),
+        'val_auc_list': wandb.Table(data=pd.DataFrame(
+            val_auc_list, index=indexs, columns=['val_auc'])),
+        'test_acc_list': wandb.Table(data=pd.DataFrame(
+            test_acc_list, index=indexs, columns=['test_acc'])),
+        'test_auc_list': wandb.Table(data=pd.DataFrame(
+            test_auc_list, index=indexs, columns=['test_auc'])),
         'best_train_acc': best_train_acc,
         'best_train_auc': best_train_auc,
         'best_val_acc': best_val_acc,
