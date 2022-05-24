@@ -1,0 +1,48 @@
+program: wrapper_zzl.py
+method: grid
+name: DSMLv1.2
+metric:
+  goal: maximize
+  name: best_test_auc
+parameters:
+  K:
+    values:
+    - 50
+    - 100
+    - 200
+  augNearRate:
+    values:
+    - 1000
+  lr:
+    values:
+    - 0.001
+    - 0.005
+    - 0.01
+  scale:
+    values:
+    - 50
+    - 100
+    - 200
+    - 250
+  vs:
+    values:
+    - 0.005
+    - 0.01
+    - 0.02
+    - 0.05
+    - 0.1
+  weight_decay:
+    values:
+    - 0.5
+    - 1
+    - 2
+    - 5
+  epochs:
+    values:
+    - 200
+    - 400
+  uselabel:
+    values:
+    - 1
+  fill_set:
+    values: [fillWithMean]

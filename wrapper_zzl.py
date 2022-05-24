@@ -22,12 +22,20 @@ def warper(args):
         config=args,
     )
 
-    train_acc_list = []
-    train_auc_list = []
-    val_acc_list = []
-    val_auc_list = []
-    test_acc_list = []
-    test_auc_list = []
+    if args.classfication_model == 1:
+        train_acc_list = []
+        train_auc_list = []
+        val_acc_list = []
+        val_auc_list = []
+        test_acc_list = []
+        test_auc_list = []
+    else:
+        train_r_list = []
+        train_mse_list = []
+        val_r_list = []
+        val_mse_list = []
+        test_r_list = []
+        test_mse_list = []
     
     for i in range(10):
         args.foldindex = i
@@ -35,45 +43,87 @@ def warper(args):
             log_dict = main_zzl.main(args)
         else:
             log_dict = baseline_zzl.main(args)
+        print(log_dict)
 
-        train_acc_list.append(log_dict['train_acc'])
-        train_auc_list.append(log_dict['train_auc'])
-        val_acc_list.append(log_dict['val_acc'])
-        val_auc_list.append(log_dict['val_auc'])
-        test_acc_list.append(log_dict['test_acc'])
-        test_auc_list.append(log_dict['test_auc'])
+        if args.classfication_model == 1:
+            train_acc_list.append(log_dict['train_acc'])
+            train_auc_list.append(log_dict['train_auc'])
+            val_acc_list.append(log_dict['val_acc'])
+            val_auc_list.append(log_dict['val_auc'])
+            test_acc_list.append(log_dict['test_acc'])
+            test_auc_list.append(log_dict['test_auc'])
+        else:
+            train_r_list.append(log_dict['train_r'])
+            train_mse_list.append(log_dict['train_mse'])
+            val_r_list.append(log_dict['val_r'])
+            val_mse_list.append(log_dict['val_mse'])
+            test_r_list.append(log_dict['test_r'])
+            test_mse_list.append(log_dict['test_mse'])
+    if args.classfication_model == 1:
+        index = np.argmax(val_auc_list)
+        best_train_acc = train_acc_list[index]
+        best_train_auc = train_auc_list[index]
+        best_val_acc = val_acc_list[index]
+        best_val_auc = val_auc_list[index]
+        best_test_acc = test_acc_list[index]
+        best_test_auc = test_auc_list[index]
+        indexs = ['fold_{}'.format(i) for i in range(len(train_acc_list))]
+    else:
+        index = np.argmin(val_mse_list)
+        best_train_r = train_r_list[index]
+        best_train_mse = train_mse_list[index]
+        best_val_r = val_r_list[index]
+        best_val_mse = val_mse_list[index]
+        best_test_r = test_r_list[index]
+        best_test_mse = test_mse_list[index]
+        indexs = ['fold_{}'.format(i) for i in range(len(train_r_list))]
+
     
-    index = np.argmax(val_auc_list)
-    best_train_acc = train_acc_list[index]
-    best_train_auc = train_auc_list[index]
-    best_val_acc = val_acc_list[index]
-    best_val_auc = val_auc_list[index]
-    best_test_acc = test_acc_list[index]
-    best_test_auc = test_auc_list[index]
-
-    indexs = ['fold_{}'.format(i) for i in range(len(train_acc_list))]
-
-    wandb.log({
-        'best_index': index,
-        'train_acc_list': wandb.Table(data=pd.DataFrame(
-            train_acc_list, index=indexs, columns=['train_acc'])),
-        'train_auc_list': wandb.Table(data=pd.DataFrame(
-            train_auc_list, index=indexs, columns=['train_auc'])),
-        'val_acc_list': wandb.Table(data=pd.DataFrame(
-            val_acc_list, index=indexs, columns=['val_acc'])),
-        'val_auc_list': wandb.Table(data=pd.DataFrame(
-            val_auc_list, index=indexs, columns=['val_auc'])),
-        'test_acc_list': wandb.Table(data=pd.DataFrame(
-            test_acc_list, index=indexs, columns=['test_acc'])),
-        'test_auc_list': wandb.Table(data=pd.DataFrame(
-            test_auc_list, index=indexs, columns=['test_auc'])),
-        'best_train_acc': best_train_acc,
-        'best_train_auc': best_train_auc,
-        'best_val_acc': best_val_acc,
-        'best_val_auc': best_val_auc,
-        'best_test_acc': best_test_acc,
-        'best_test_auc': best_test_auc,
-    })
+    if args.classfication_model == 1:
+        log_dict = {
+            'best_index': index,
+            'train_acc_list': wandb.Table(data=pd.DataFrame(
+                train_acc_list, index=indexs, columns=['train_acc'])),
+            'train_auc_list': wandb.Table(data=pd.DataFrame(
+                train_auc_list, index=indexs, columns=['train_auc'])),
+            'val_acc_list': wandb.Table(data=pd.DataFrame(
+                val_acc_list, index=indexs, columns=['val_acc'])),
+            'val_auc_list': wandb.Table(data=pd.DataFrame(
+                val_auc_list, index=indexs, columns=['val_auc'])),
+            'test_acc_list': wandb.Table(data=pd.DataFrame(
+                test_acc_list, index=indexs, columns=['test_acc'])),
+            'test_auc_list': wandb.Table(data=pd.DataFrame(
+                test_auc_list, index=indexs, columns=['test_auc'])),
+            'best_train_acc': best_train_acc,
+            'best_train_auc': best_train_auc,
+            'best_val_acc': best_val_acc,
+            'best_val_auc': best_val_auc,
+            'best_test_acc': best_test_acc,
+            'best_test_auc': best_test_auc,
+        }
+    else:
+        log_dict = {
+            'best_index': index,
+            'train_r_list': wandb.Table(data=pd.DataFrame(
+                train_r_list, index=indexs, columns=['train_r'])),
+            'train_mse_list': wandb.Table(data=pd.DataFrame(
+                train_mse_list, index=indexs, columns=['train_mse'])),
+            'val_r_list': wandb.Table(data=pd.DataFrame(
+                val_r_list, index=indexs, columns=['val_r'])),
+            'val_mse_list': wandb.Table(data=pd.DataFrame(
+                val_mse_list, index=indexs, columns=['val_mse'])),
+            'test_r_list': wandb.Table(data=pd.DataFrame(
+                test_r_list, index=indexs, columns=['test_r'])),
+            'test_mse_list': wandb.Table(data=pd.DataFrame(
+                test_mse_list, index=indexs, columns=['test_mse'])),
+            'best_train_r': best_train_r,
+            'best_train_mse': best_train_mse,
+            'best_val_r': best_val_r,
+            'best_val_mse': best_val_mse,
+            'best_test_r': best_test_r,
+            'best_test_mse': best_test_mse,
+        }
+    wandb.log(log_dict)
 
 
 if __name__ == "__main__":
@@ -147,6 +197,7 @@ if __name__ == "__main__":
     parser.add_argument('--ve', type=float, default=-1)
     parser.add_argument('--K', type=int, default=15)
     parser.add_argument("--uselabel", type=int, default=0)
+    parser.add_argument("--classfication_model", type=int, default=0)
 
     # train param
     parser.add_argument('--batch_size', type=int, default=2000, )

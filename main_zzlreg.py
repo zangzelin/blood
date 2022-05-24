@@ -13,7 +13,6 @@ import functools
 # from pl_bolts.optimizers.lr_scheduler import LinearWarmupCosineAnnealingLR
 from torch.optim.lr_scheduler import StepLR
 import Loss.dmt_loss_aug as dmt_loss_aug
-from sklearn.metrics import mean_squared_error, r2_score, precision_recall_curve, average_precision_score
 
 # import Similarity.sim_tdis as Sim_use
 import Similarity.sim_Gaussian_1 as Sim_use
@@ -55,7 +54,6 @@ class DMT_Model(pl.LightningModule):
         super().__init__()
         self.save_hyperparameters()
         self.celoss = nn.CrossEntropyLoss()
-        self.mseloss = torch.nn.MSELoss()
         # Set our init args as class attributes
         self.data_dir = data_dir
         self.learning_rate = self.hparams.lr
@@ -221,17 +219,7 @@ class DMT_Model(pl.LightningModule):
             v_latent=self.nushadular.Getnu(self.current_epoch),
         )
         # print(predictint.cpu().long(), '\n', label.long())
-        if self.hparams.classfication_model == 1:
-            loss_ce = self.celoss(lat, label.long())
-        else:
-            nn_softmax = nn.Softmax(dim=1)
-            lab_learn = torch.cat(
-                [(1 - label).reshape(-1, 1), label.reshape(-1, 1)],
-                dim=1
-                ).float()
-            loss_ce = self.mseloss(nn_softmax(lat), lab_learn)
-        # else:
-        #     loss_ce = self.celoss(lat, label.long())
+        loss_ce = self.celoss(lat, label.long())
         total_loss = loss + loss_ce / self.hparams.scale
 
         # self.logger.experiment.
@@ -297,73 +285,39 @@ class DMT_Model(pl.LightningModule):
             train_data = self.train_dataset.data.to(self.device)
             val_data = self.train_dataset.dataval.to(self.device)
             test_data = self.train_dataset.datatest.to(self.device)
-            # train_label = self.train_dataset.label.cpu().numpy().astype(np.int32)
-            # val_label = self.train_dataset.labelval.cpu().numpy().astype(np.int32)
-            # test_label = self.train_dataset.labeltest.cpu().numpy().astype(np.int32)
+            train_label = self.train_dataset.label.cpu().numpy().astype(np.int32)
+            val_label = self.train_dataset.labelval.cpu().numpy().astype(np.int32)
+            test_label = self.train_dataset.labeltest.cpu().numpy().astype(np.int32)
 
             train_lat, train_emb = train_predict = self(train_data)
             val_lat, val_emb = val_predict = self(val_data)
             test_lat, test_emb = val_predict = self(test_data)
 
-            if self.hparams.classfication_model == 1:
+            train_predict = (train_emb[:, 0] < train_emb[:, 1]).cpu().numpy().astype(int)
+            val_predict = (val_emb[:, 0] < val_emb[:, 1]).cpu().numpy().astype(int)
+            test_predict = (test_emb[:, 0] < test_emb[:, 1]).cpu().numpy().astype(int)
 
-                train_label = self.train_dataset.label.cpu().numpy().astype(np.int32)
-                val_label = self.train_dataset.labelval.cpu().numpy().astype(np.int32)
-                test_label = self.train_dataset.labeltest.cpu().numpy().astype(np.int32)
+            train_fpr, train_tpr, thresholds = metrics.roc_curve(train_predict, train_label)
+            train_score = metrics.accuracy_score(train_predict, train_label)
+            train_auc = metrics.auc(train_fpr, train_tpr)
 
-                train_predict = (train_emb[:, 0] < train_emb[:, 1]).cpu().numpy().astype(int)
-                val_predict = (val_emb[:, 0] < val_emb[:, 1]).cpu().numpy().astype(int)
-                test_predict = (test_emb[:, 0] < test_emb[:, 1]).cpu().numpy().astype(int)
+            val_fpr, val_tpr, thresholds = metrics.roc_curve(val_predict, val_label)
+            val_score = metrics.accuracy_score(val_predict, val_label)
+            val_auc = metrics.auc(val_fpr, val_tpr)
+            
+            test_fpr, test_tpr, thresholds = metrics.roc_curve(test_predict, test_label)
+            test_score = metrics.accuracy_score(test_predict, test_label)
+            test_auc = metrics.auc(test_fpr, test_tpr)
 
-                train_fpr, train_tpr, thresholds = metrics.roc_curve(train_predict, train_label)
-                train_score = metrics.accuracy_score(train_predict, train_label)
-                train_auc = metrics.auc(train_fpr, train_tpr)
+            self.log_dict = {
+                'train_acc': train_score,
+                'val_acc': val_score,
+                'test_acc': test_score,
+                'train_auc': train_auc,
+                'val_auc': val_auc,
+                'test_auc': test_auc,
+            }
 
-                val_fpr, val_tpr, thresholds = metrics.roc_curve(val_predict, val_label)
-                val_score = metrics.accuracy_score(val_predict, val_label)
-                val_auc = metrics.auc(val_fpr, val_tpr)
-                
-                test_fpr, test_tpr, thresholds = metrics.roc_curve(test_predict, test_label)
-                test_score = metrics.accuracy_score(test_predict, test_label)
-                test_auc = metrics.auc(test_fpr, test_tpr)
-
-                self.log_dict = {
-                    'train_acc': train_score,
-                    'val_acc': val_score,
-                    'test_acc': test_score,
-                    'train_auc': train_auc,
-                    'val_auc': val_auc,
-                    'test_auc': test_auc,
-                }
-
-            else:
-
-                train_label = self.train_dataset.label.cpu().numpy()
-                val_label = self.train_dataset.labelval.cpu().numpy()
-                test_label = self.train_dataset.labeltest.cpu().numpy()
-
-                nn_softmax = nn.Softmax(dim=1)
-                train_predict = nn_softmax(train_emb)[:, 1].cpu().numpy()
-                val_predict = nn_softmax(val_emb)[:, 1].cpu().numpy()
-                test_predict = nn_softmax(test_emb)[:, 1].cpu().numpy()
-
-                train_mse = mean_squared_error(train_label, train_predict)
-                train_r = r2_score(train_label, train_predict)
-
-                val_mse = mean_squared_error(val_label, val_predict)
-                val_r = r2_score(val_label, val_predict)
-
-                test_mse = mean_squared_error(test_label, test_predict)
-                test_r = r2_score(test_label, test_predict)
-
-                self.log_dict = {
-                    'train_r': train_r,
-                    'val_r': val_r,
-                    'test_r': test_r,
-                    'train_mse': train_mse,
-                    'val_mse': val_mse,
-                    'test_mse': test_mse,
-                }
             # wandb.log(self.log_dict)
         else:
             pass
@@ -540,12 +494,13 @@ if __name__ == "__main__":
     parser.add_argument('--foldindex', type=int, default=0)
     parser.add_argument('--weight_decay', type=float, default=1e-4)
     parser.add_argument("--uselabel", type=int, default=0)
+    parser.add_argument("--classfication_model", type=int, default=1)
+    
 
     parser.add_argument('--scale', type=int, default=30)
     parser.add_argument('--vs', type=float, default=1e-2)
     parser.add_argument('--ve', type=float, default=-1)
     parser.add_argument('--K', type=int, default=15)
-    parser.add_argument("--classfication_model", type=int, default=0)
 
     # train param
     parser.add_argument('--batch_size', type=int, default=2000, )

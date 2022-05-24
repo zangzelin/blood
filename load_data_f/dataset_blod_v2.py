@@ -34,61 +34,43 @@ class BlodNoMissingDataModule(Source.Source):
         # print(data, '\n', label)
 
         (
-            nNull, missing, fillWithMean, fillWithMiddle, fillWithKNN,
-        ) = preprocess(knn_neighbors=2, ifNorm=True, preSave=True)
+            nNull, missing, fillWithMean, fillWithMiddle, fillWithKNN
+        ) = preprocess(knn_neighbors=2, ifNorm=True, preSave=True, hos=self.args['hospitals'])
 
-        if self.fill_set == 'nNull':
+        if self.args['data_name'] == "BlodNNull":
             data, label = nNull['data'], nNull['label']
-            # print("data, label = nNull['data'], nNull['label']")
-        elif self.fill_set == 'fillWithMiddle':
-            data, label = fillWithMiddle['data'], fillWithMiddle['label']
-            # print("data, label = fillWithMiddle['data'], fillWithMiddle['label']")
-        elif self.fill_set == 'fillWithKNN':
-            data, label = fillWithKNN['data'], fillWithKNN['label']
-            # print("data, label = fillWithKNN['data'], fillWithKNN['label']")
-        elif self.fill_set == 'fillWithMean':
+            tl = "Not Null"
+        if self.args['data_name'] == "BlodFillWithMean":
             data, label = fillWithMean['data'], fillWithMean['label']
-            # print("data, label = fillWithMean['data'], fillWithMean['label']")
-        tl = "Not Null"
-        # data, label = fillWithMean['data'], fillWithMean['label']
-        # tl = "Fill With Mean"
-        # data, label = fillWithMiddle['data'], fillWithMiddle['label']
-        # tl = "Fill With Middle"
-        label_forClassification = deepcopy(label)
-        label_forClassification[label > 0] = 1
+            tl = "Fill With Mean"
+        if self.args['data_name'] == "BlodFillWithMedian":
+            data, label = fillWithMiddle['data'], fillWithMiddle['label']
+            tl = "Fill With Middle"
+        if self.args['data_name'] == "BlodFillWithKNN":
+            data, label = fillWithKNN['data'], fillWithKNN['label']
+            tl = "Fill With Middle"
 
-        # label[label > 0] = 1
+        # label[label >= 0.5] = 1
+        # label[label < 0.5] = 0
+        label_forindex = deepcopy(label)
+        label_forindex[label > 0] = 1
 
-        if self.classfication_model == 1:
-            X_train, X_test, y_train, y_test = train_test_split(
-                data, label_forClassification,
-                test_size=0.1,
-                stratify=label_forClassification,
-                random_state=1,
-                )
-            y_train_class = y_train
-        else:
-            X_train, X_test, y_train_class, y_test = train_test_split(
-                data, label_forClassification,
-                test_size=0.1,
-                stratify=label_forClassification,
-                random_state=1,
-                )
-            
-            X_train, X_test, y_train, y_test = train_test_split(
-                data, label,
-                test_size=0.1,
-                stratify=label_forClassification,
-                random_state=1,
-                )
-        
+        # print(label)
+        # X_train, X_test, y_train, y_test = train_test_split(data, label, test_size=0.1, random_state=1)
+        X_train, X_test, y_train, y_test = train_test_split(data, label, test_size=0.1, stratify=label_forindex, random_state=1)
+        X_train_index, _, y_train_index, _ = train_test_split(data, label_forindex, test_size=0.1, stratify=label_forindex, random_state=1)
         skf = StratifiedKFold(n_splits=10, random_state=2022, shuffle=True)
         acc, auc = {}, {}
-        for i, (train_index, val_index) in enumerate(skf.split(X_train, y_train_class)):
+        # for clf_key in clfs.keys():
+        #     print('the classifier is : {}'.format(clf_key))
+        #     acc[clf_key], auc[clf_key] = [], []
+        for i, (train_index, val_index) in enumerate(skf.split(X_train_index, y_train_index)):
             if i == self.foldindex:
                 # print(self.foldindex, test_index)
                 train_X, train_y = X_train[train_index], y_train[train_index]
                 val_X, val_y = X_train[val_index], y_train[val_index]
+                # print(train_X, train_y)
+                # print(val_X, val_y)
                 data = np.array(train_X)
                 label = np.array(train_y)
                 dataval = np.array(val_X)
@@ -105,7 +87,7 @@ class BlodNoMissingDataModule(Source.Source):
 
         self.inputdim = self.data[0].shape
         self.same_sigma = False
-        # print('shape = ', self.data.shape)
+        print('shape = ', self.data.shape)
         self.label_str = [label]
 
 

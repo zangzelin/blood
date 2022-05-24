@@ -1,0 +1,50 @@
+program: wrapper_zzl.py
+method: grid
+name: REG_null_v1
+metric:
+  goal: maximize
+  name: best_test_auc
+parameters:
+  K:
+    values:
+    - 50
+    - 30
+    - 10
+  augNearRate:
+    values:
+    - 1000
+  lr:
+    values:
+    - 0.001
+    - 0.005
+    - 0.01
+    - 0.02
+  scale:
+    values:
+    - 50
+    - 100
+    - 150
+    - 200
+  vs:
+    values:
+    - 0.005
+    - 0.01
+    - 0.02
+  weight_decay:
+    values:
+    - 0.001
+    - 0.01
+    - 0.1
+    - 0.5
+  epochs:
+    values:
+    - 100
+    - 200
+  uselabel:
+    values:
+    - 1
+  classfication_model:
+    values:
+    - 0
+  fill_set:
+    values: [nNull]

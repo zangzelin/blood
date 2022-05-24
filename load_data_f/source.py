@@ -12,7 +12,7 @@ from pynndescent import NNDescent
 
 class Source(torch.utils.data.Dataset):
 
-    def __init__(self, DistanceF, SimilarityF, SimilarityNPF, foldindex, fill_set, uselabel, jumpPretreatment=False, **kwargs):
+    def __init__(self, DistanceF, SimilarityF, SimilarityNPF, foldindex, fill_set, uselabel, classfication_model, jumpPretreatment=False, **kwargs):
         self.args = kwargs
         self.DistanceF = DistanceF
         self.SimilarityF = SimilarityF
@@ -20,6 +20,7 @@ class Source(torch.utils.data.Dataset):
         self.train = True
         self.foldindex = foldindex
         self.fill_set = fill_set
+        self.classfication_model = classfication_model
         self._LoadData()
         # if not jumpPretreatment:
         # filename = 'data_name{}same_sigma{}perplexity{}v_input{}metric{}pow_input{}n_point{}'.format(
