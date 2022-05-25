@@ -196,8 +196,8 @@ if __name__ == "__main__":
     parser.add_argument('--vs', type=float, default=1e-2)
     parser.add_argument('--ve', type=float, default=-1)
     parser.add_argument('--K', type=int, default=15)
-    parser.add_argument("--uselabel", type=int, default=0)
-    parser.add_argument("--classfication_model", type=int, default=0)
+    parser.add_argument("--uselabel", type=int, default=1)
+    parser.add_argument("--classfication_model", type=int, default=1)
 
     # train param
     parser.add_argument('--batch_size', type=int, default=2000, )

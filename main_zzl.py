@@ -315,15 +315,15 @@ class DMT_Model(pl.LightningModule):
                 val_predict = (val_emb[:, 0] < val_emb[:, 1]).cpu().numpy().astype(int)
                 test_predict = (test_emb[:, 0] < test_emb[:, 1]).cpu().numpy().astype(int)
 
-                train_fpr, train_tpr, thresholds = metrics.roc_curve(train_predict, train_label)
+                train_fpr, train_tpr, thresholds = metrics.roc_curve(train_label, train_emb[:, 1].cpu().numpy())
                 train_score = metrics.accuracy_score(train_predict, train_label)
                 train_auc = metrics.auc(train_fpr, train_tpr)
 
-                val_fpr, val_tpr, thresholds = metrics.roc_curve(val_predict, val_label)
+                val_fpr, val_tpr, thresholds = metrics.roc_curve(val_label, val_emb[:, 1].cpu().numpy())
                 val_score = metrics.accuracy_score(val_predict, val_label)
                 val_auc = metrics.auc(val_fpr, val_tpr)
                 
-                test_fpr, test_tpr, thresholds = metrics.roc_curve(test_predict, test_label)
+                test_fpr, test_tpr, thresholds = metrics.roc_curve(test_label, test_emb[:, 1].cpu().numpy())
                 test_score = metrics.accuracy_score(test_predict, test_label)
                 test_auc = metrics.auc(test_fpr, test_tpr)
 
