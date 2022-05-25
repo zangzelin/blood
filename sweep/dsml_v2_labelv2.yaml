@@ -44,6 +44,9 @@ parameters:
     values:
     - 200
     - 400
+  classfication_model:
+    values:
+    - 1
   uselabel:
     values:
     - 1

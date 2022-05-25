@@ -301,12 +301,16 @@ class DMT_Model(pl.LightningModule):
             # val_label = self.train_dataset.labelval.cpu().numpy().astype(np.int32)
             # test_label = self.train_dataset.labeltest.cpu().numpy().astype(np.int32)
 
-            train_lat, train_emb = train_predict = self(train_data)
-            val_lat, val_emb = val_predict = self(val_data)
-            test_lat, test_emb = val_predict = self(test_data)
+            train_lat, train_emb = self(train_data)
+            val_lat, val_emb = self(val_data)
+            test_lat, test_emb = self(test_data)
+
+            nn_softmax = nn.Softmax(dim=1)
+            train_emb = nn_softmax(train_emb)
+            val_emb = nn_softmax(val_emb)
+            test_emb = nn_softmax(test_emb)
 
             if self.hparams.classfication_model == 1:
-
                 train_label = self.train_dataset.label.cpu().numpy().astype(np.int32)
                 val_label = self.train_dataset.labelval.cpu().numpy().astype(np.int32)
                 test_label = self.train_dataset.labeltest.cpu().numpy().astype(np.int32)
