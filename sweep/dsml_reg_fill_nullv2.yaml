@@ -7,17 +7,15 @@ metric:
 parameters:
   K:
     values:
+    - 10
     - 5
-    - 4
     - 3
   augNearRate:
     values:
     - 1000
-    - 10000
-    - 100000
   lr:
     values:
-    - 0.001
+    - 0.002
     - 0.005
     - 0.01
     - 0.02

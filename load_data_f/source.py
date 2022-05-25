@@ -40,7 +40,13 @@ class Source(torch.utils.data.Dataset):
             # index = NNDescent(X_rshaped, n_jobs=-1, metric=self.args['metric'])
             # self.neighbors_index, neighbors_dist = index.query(X_rshaped, k=self.args['K'])
             dis = pairwise_distances(X_rshaped)
-            M = np.repeat(self.label.reshape(1, -1), X_rshaped.shape[0], axis=0)
+
+            if (self.label == 1).sum() > 0.1 * self.label.shape[0]:
+                label_mask = (self.label * 10).int()
+            else:
+                label_mask = self.label.int()
+
+            M = np.repeat(label_mask.reshape(1, -1), X_rshaped.shape[0], axis=0)
             dis[(M - M.T) != 0] = dis.max() + 1
             neighbors_index = dis.argsort(axis=1)[:, 1: self.args['K'] + 1]
             self.neighbors_index = torch.tensor(neighbors_index).cuda()

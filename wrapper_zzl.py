@@ -6,6 +6,8 @@ import sys
 import os
 import pytorch_lightning as pl
 import pandas as pd
+
+
 def warper(args):
     
     info = [str(s) for s in sys.argv[1:]]
@@ -78,7 +80,6 @@ def warper(args):
         best_test_mse = test_mse_list[index]
         indexs = ['fold_{}'.format(i) for i in range(len(train_r_list))]
 
-    
     if args.classfication_model == 1:
         log_dict = {
             'best_index': index,
@@ -197,7 +198,7 @@ if __name__ == "__main__":
     parser.add_argument('--ve', type=float, default=-1)
     parser.add_argument('--K', type=int, default=15)
     parser.add_argument("--uselabel", type=int, default=1)
-    parser.add_argument("--classfication_model", type=int, default=1)
+    parser.add_argument("--classfication_model", type=int, default=0)
 
     # train param
     parser.add_argument('--batch_size', type=int, default=2000, )
