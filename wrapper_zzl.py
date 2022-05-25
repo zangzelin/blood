@@ -193,7 +193,7 @@ if __name__ == "__main__":
         'nNull', 'fillWithMean', 'fillWithMiddle', 'fillWithKNN',
     ])
 
-    parser.add_argument('--scale', type=int, default=30)
+    parser.add_argument('--scale', type=float, default=30)
     parser.add_argument('--vs', type=float, default=1e-2)
     parser.add_argument('--ve', type=float, default=-1)
     parser.add_argument('--K', type=int, default=15)
@@ -201,7 +201,7 @@ if __name__ == "__main__":
     parser.add_argument("--classfication_model", type=int, default=0)
 
     # train param
-    parser.add_argument('--batch_size', type=int, default=2000, )
+    parser.add_argument('--batch_size', type=int, default=5000, )
     parser.add_argument('--epochs', type=int, default=500)
     parser.add_argument('--lr', type=float, default=1e-3, metavar='LR')
     parser.add_argument('--seed', type=int, default=1, metavar='S')

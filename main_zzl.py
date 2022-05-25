@@ -224,12 +224,12 @@ class DMT_Model(pl.LightningModule):
         if self.hparams.classfication_model == 1:
             loss_ce = self.celoss(lat, label.long())
         else:
-            nn_softmax = nn.Softmax(dim=1)
+            nn_sigmoid = nn.Sigmoid()
             lab_learn = torch.cat(
                 [(1 - label).reshape(-1, 1), label.reshape(-1, 1)],
                 dim=1
                 ).float()
-            loss_ce = self.mseloss(nn_softmax(lat), lab_learn)
+            loss_ce = self.mseloss(nn_sigmoid(lat), lab_learn)
         # else:
         #     loss_ce = self.celoss(lat, label.long())
         total_loss = loss + loss_ce / self.hparams.scale
@@ -305,12 +305,12 @@ class DMT_Model(pl.LightningModule):
             val_lat, val_emb = self(val_data)
             test_lat, test_emb = self(test_data)
 
-            nn_softmax = nn.Softmax(dim=1)
-            train_emb = nn_softmax(train_emb)
-            val_emb = nn_softmax(val_emb)
-            test_emb = nn_softmax(test_emb)
-
             if self.hparams.classfication_model == 1:
+                nn_softmax = nn.Softmax(dim=1)
+                train_emb = nn_softmax(train_emb)
+                val_emb = nn_softmax(val_emb)
+                test_emb = nn_softmax(test_emb)
+
                 train_label = self.train_dataset.label.cpu().numpy().astype(np.int32)
                 val_label = self.train_dataset.labelval.cpu().numpy().astype(np.int32)
                 test_label = self.train_dataset.labeltest.cpu().numpy().astype(np.int32)
@@ -346,10 +346,12 @@ class DMT_Model(pl.LightningModule):
                 val_label = self.train_dataset.labelval.cpu().numpy()
                 test_label = self.train_dataset.labeltest.cpu().numpy()
 
-                nn_softmax = nn.Softmax(dim=1)
-                train_predict = nn_softmax(train_emb)[:, 1].cpu().numpy()
-                val_predict = nn_softmax(val_emb)[:, 1].cpu().numpy()
-                test_predict = nn_softmax(test_emb)[:, 1].cpu().numpy()
+                # nn_softmax = nn.Softmax(dim=1)
+                nn_sigmoid = nn.Sigmoid()
+                train_predict = nn_sigmoid(train_emb)[:, 1].cpu().numpy()
+                val_predict = nn_sigmoid(val_emb)[:, 1].cpu().numpy()
+                test_predict = nn_sigmoid(test_emb)[:, 1].cpu().numpy()
+                # print(train_label)
 
                 train_mse = mean_squared_error(train_label, train_predict)
                 train_r = r2_score(train_label, train_predict)
