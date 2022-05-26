@@ -23,4 +23,5 @@ parameters:
   classfication_model:
     values: [1]
   fill_set:
-    values: [nNull]
+    values: ['nNull', 'fillWithMean', 'fillWithMiddle', 'fillWithKNN']
+
