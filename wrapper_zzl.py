@@ -1,12 +1,14 @@
 import main_zzl
-import baseline_zzl
+# import baseline_zzl
+import baseline_msq
 import numpy as np
 import wandb
 import sys
 import os
 import pytorch_lightning as pl
 import pandas as pd
-
+import pickle
+import uuid
 
 def warper(args):
     
@@ -39,12 +41,15 @@ def warper(args):
         test_r_list = []
         test_mse_list = []
     
+    model_list = []
     for i in range(10):
         args.foldindex = i
         if args.method == 'dmt':
             log_dict = main_zzl.main(args)
+            model_list.append(None)
         else:
-            log_dict = baseline_zzl.main(args)
+            log_dict, model = baseline_msq.main(args)
+            model_list.append(model)
         print(log_dict)
 
         if args.classfication_model == 1:
@@ -61,6 +66,7 @@ def warper(args):
             val_mse_list.append(log_dict['val_mse'])
             test_r_list.append(log_dict['test_r'])
             test_mse_list.append(log_dict['test_mse'])
+    
     if args.classfication_model == 1:
         index = np.argmax(val_auc_list)
         best_train_acc = train_acc_list[index]
@@ -70,6 +76,11 @@ def warper(args):
         best_test_acc = test_acc_list[index]
         best_test_auc = test_auc_list[index]
         indexs = ['fold_{}'.format(i) for i in range(len(train_acc_list))]
+        path = './checkpoints/{}.joblib'.format(str(uuid.uuid4()))
+        print(model_list[index])
+        with open(path, "wb") as f:
+            pickle.dump(model_list[index], f)
+        wandb.save(path)
     else:
         index = np.argmin(val_mse_list)
         best_train_r = train_r_list[index]
@@ -183,8 +194,8 @@ if __name__ == "__main__":
     parser.add_argument('--model_type', type=str, default='mlp')
     parser.add_argument('--augNearRate', type=float, default=100)
     parser.add_argument('--offline', type=int, default=0)
-    parser.add_argument('--p1_index', type=int, default=0)
-    parser.add_argument('--p2_index', type=int, default=0)
+    parser.add_argument('--p1', type=int, default=0)
+    parser.add_argument('--p2', type=int, default=0)
     # parser.add_argument('--method', type=str, default='dmt',
     #                     choices=['dmt', 'dmt_mask'])
     parser.add_argument('--foldindex', type=int, default=0)

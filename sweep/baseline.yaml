@@ -1,4 +1,4 @@
-program: warper_zzl.py
+program: wrapper_zzl.py
 method: grid
 metric:
   goal: maximize
@@ -15,10 +15,12 @@ parameters:
         'gradient_boost',
         'adaboost',
         'lightGBM',
-        'xgboost',
-        'bagging',
   ]
-  p1_index:
+  p1:
     values: [0,1,2,3]
-  p2_index:
+  p2:
     values: [0,1,2,3,4]
+  classfication_model:
+    values: [1]
+  fill_set:
+    values: [nNull]
