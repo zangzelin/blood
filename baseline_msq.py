@@ -52,19 +52,19 @@ def main(args):
         p1_list = [1, 3, 5, 10, 15, 20]
         p2_list = [10, 20, 30, 50, 70, 100]
     if args.method == 'lightGBM':
-        p1_list = [10, 20, 30, 50, 70, 100]
-        p2_list = [30, 50, 70, 100, 120, 130]
+        p1_list = [21, 26, 31, 26, 41]
+        p2_list = [80, 90, 100, 110, 120, 130]
     if args.method == 'LR':
         p1_list = [0.00001, 0.00005, 0.0001, 0.0002, 0.0005, 0.0007]
         p2_list = [0.6, 0.8, 1.0, 1.2, 1.5, 1.7, 2.0]
     if args.method in ['random_forest', 'gradient_boost']:
-        p1_list = [2, 3, 5, 7, 10, 15]
-        p2_list = [30, 50, 70, 100, 120, 130]
+        p1_list = [2, 3, 4, 5, 6, 7]
+        p2_list = [80, 90, 100, 110, 120, 130]
     if args.method in ['decision_tree', 'extra_tree']:
         p1_list = [2, 3, 5, 7, 10, 15]
         p2_list = [1, 2, 3, 5, 7, 10]
     if args.method == 'adaboost':
-        p1_list = [0.7, 0.8, 1, 2, 5, ]
+        p1_list = [0.8, 0.9, 1, 2, 5, ]
         p2_list = [40, 50, 60, 70, 80, 90]
     if args.method == 'svm':
         p1_list = [10, 50, 100, 300, 500, -1]
@@ -77,16 +77,13 @@ def main(args):
     refs = {
         'KNN': (neighbors.KNeighborsRegressor(n_neighbors=p1, leaf_size=p2), neighbors.KNeighborsClassifier(n_neighbors=p1, leaf_size=p2)),
         'LR': (linear_model.LinearRegression(), linear_model.LogisticRegression(tol=p1, C=p2, penalty='l2', random_state=1)),
-        'random_forest': (RandomForestRegressor(min_samples_split=p1, n_estimators=p2, random_state=1), RandomForestClassifier(min_samples_split=p1, n_estimators=p2, random_state=1)),
+        'random_forest': (RandomForestRegressor(min_samples_split=p1, n_estimators=p2, random_state=1), RandomForestClassifier(max_depth=p1, n_estimators=p2, random_state=1)),
         'decision_tree': (tree.DecisionTreeRegressor(min_samples_split=p1, min_samples_leaf=p2, random_state=1), tree.DecisionTreeClassifier(min_samples_split=p1, min_samples_leaf=p2, random_state=1)),
         'extra_tree': (tree.ExtraTreeRegressor(min_samples_split=p1, min_samples_leaf=p2, random_state=1), tree.ExtraTreeClassifier(min_samples_split=p1, min_samples_leaf=p2, random_state=1)),
         'svm': (svm.SVR(), svm.SVC(max_iter=p1, tol=p2, random_state=1, probability=True)),
         'gradient_boost': (GradientBoostingRegressor(min_samples_split=p1, n_estimators=p2, learning_rate=1.0, max_depth=1, random_state=1), GradientBoostingClassifier(min_samples_split=p1, n_estimators=p2, learning_rate=1.0, max_depth=1, random_state=1)),
         'adaboost': (AdaBoostRegressor(learning_rate=p1, n_estimators=p2, random_state=1), AdaBoostClassifier(learning_rate=p1, n_estimators=p2, random_state=1)),
         'lightGBM': (lgb.LGBMRegressor(num_leaves=p1, n_estimators=p2, random_state=1), lgb.LGBMClassifier(num_leaves=p1, n_estimators=p2, random_state=1)),
-
-        # 'bagging': (BaggingRegressor(n_estimators=p2, verbose=0, random_state=1), BaggingClassifier(n_estimators=p2, verbose=0, random_state=1)),
-        # 'xgboost': (XGBRegressor(verbosity=0), XGBClassifier(verbosity=0, use_label_encoder=False))
     }
 
     train_data = dataset.data.cpu().numpy()

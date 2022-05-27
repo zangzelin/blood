@@ -40,7 +40,8 @@ import pickle
 # import networkx as nx
 import random
 
-def main(args):
+
+def main(args, model_path_list=[], model_name_list=[],):
 
     pl.utilities.seed.seed_everything(1)
     info = [str(s) for s in sys.argv[1:]]
@@ -66,29 +67,31 @@ def main(args):
     val_label = dataset.labelval.cpu().numpy().astype(np.int32)
     test_label = dataset.labeltest.cpu().numpy().astype(np.int32)
 
-    classifier = pickle.load(open('roc/RF.joblib','rb'))
-    lr_probs = classifier.predict_proba(test_data)[:,1]
-
     ns_probs = [0 for _ in range(len(test_label))]
-    # calculate scores
     ns_auc = roc_auc_score(test_label, ns_probs)
-    lr_auc = roc_auc_score(test_label, lr_probs)
+
+    plt.figure(figsize=(5, 5))
+    
+    for i, modelpath in enumerate(model_path_list):
+        classifier = pickle.load(open(modelpath, 'rb'))
+        lr_probs = classifier.predict_proba(test_data)[:, 1]
+        lr_auc = roc_auc_score(test_label, lr_probs)
+        label_name = '%s: ROC AUC=%.3f' % (model_name_list[i], lr_auc)
+        lr_fpr, lr_tpr, _ = roc_curve(test_label, lr_probs)
+        plt.plot(lr_fpr, lr_tpr, marker='.', label=label_name)
+
+    # calculate scores
     # summarize scores
     print('No Skill: ROC AUC=%.3f' % (ns_auc))
-    print('Logistic: ROC AUC=%.3f' % (lr_auc))
-    # calculate roc curves
     ns_fpr, ns_tpr, _ = roc_curve(test_label, ns_probs)
-    lr_fpr, lr_tpr, _ = roc_curve(test_label, lr_probs)
-    # plot the roc curve for the model
     plt.plot(ns_fpr, ns_tpr, linestyle='--', label='No Skill')
-    plt.plot(lr_fpr, lr_tpr, marker='.', label='Logistic')
+    
     # axis labels
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
     # show the legend
     plt.legend()
 
-    plt.savefig('roc/t.png')
 
 if __name__ == "__main__":
     
@@ -176,4 +179,32 @@ if __name__ == "__main__":
     # print(args.foldindex)
     # os.environ['CUDA_VISIBLE_DEVICES'] = "0" if args.foldindex < 5 else "1"
     # os.environ['CUDA_VISIBLE_DEVICES'] = "0" if args.foldindex < 5 else "1"
-    main(args)
+
+    df = pd.read_csv('file_path.csv')
+    name_list = df['Unnamed: 0'].to_list()
+
+    # path_list = df['nNull'].to_list()
+    # main(args, model_path_list=path_list, model_name_list=name_list)
+    # plt.savefig('roc/nNull.png')
+    # plt.close()
+
+    # df = pd.read_csv('file_path.csv')
+    # args.__dict__['fill_set'] = 'fillWithMean'
+    # path_list = df['fillWithMiddle'].to_list()
+    # main(args, model_path_list=path_list, model_name_list=name_list)
+    # plt.savefig('roc/fillWithMiddle.png')
+    # plt.close()
+
+    # df = pd.read_csv('file_path.csv')
+    # args.__dict__['fill_set'] = 'fillWithMiddle'
+    # path_list = df['fillWithKNN'].to_list()
+    # main(args, model_path_list=path_list, model_name_list=name_list)
+    # plt.savefig('roc/fillWithKNN.png')
+    # plt.close()
+
+    # df = pd.read_csv('file_path.csv')
+    args.__dict__['fill_set'] = 'fillWithMean'
+    path_list = df['fillWithMean'].to_list()
+    main(args, model_path_list=path_list, model_name_list=name_list)
+    plt.savefig('roc/fillWithMean.png')
+    plt.close()
