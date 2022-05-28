@@ -1,0 +1,27 @@
+program: wrapper_zzl.py
+method: grid
+metric:
+  goal: maximize
+  name: metric/acc
+parameters:
+  method:
+    values: [
+        'KNN',
+        'LR',
+        'random_forest',
+        'decision_tree',
+        'extra_tree',
+        'svm',
+        'gradient_boost',
+        'adaboost',
+        'lightGBM',
+  ]
+  p1:
+    values: [0,1,2,3]
+  p2:
+    values: [0,1,2,3,4]
+  classfication_model:
+    values: [0]
+  fill_set:
+    values: ['nNull', 'fillWithMean', 'fillWithMiddle', 'fillWithKNN']
+

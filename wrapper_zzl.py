@@ -1,6 +1,7 @@
 import main_zzl
 # import baseline_zzl
 import baseline_msq
+import baseline_msq_reg
 import numpy as np
 import wandb
 import sys
@@ -48,7 +49,10 @@ def warper(args):
             log_dict = main_zzl.main(args)
             model_list.append(None)
         else:
-            log_dict, model = baseline_msq.main(args)
+            if args.classfication_model == 1:
+                log_dict, model = baseline_msq.main(args)
+            else:
+                log_dict, model = baseline_msq_reg.main(args)
             model_list.append(model)
         print(log_dict)
 

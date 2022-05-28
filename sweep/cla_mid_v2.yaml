@@ -1,0 +1,49 @@
+method: grid
+program: wrapper_zzl.py
+metric:
+  goal: maximize
+  name: best_test_auc
+name: Classification_fillWithMiddle_v2
+parameters:
+  K:
+    values:
+    - 350
+    - 300
+    - 250
+  augNearRate:
+    values:
+    - 10000
+  lr:
+    values:
+    - 0.02
+    - 0.03
+    - 0.04
+  scale:
+    values:
+    - 150
+    - 200
+    - 250
+  vs:
+    values:
+    - 0.02
+    - 0.03
+    - 0.04
+    - 0.05
+  weight_decay:
+    values:
+    - 0.5
+    - 1
+  epochs:
+    values:
+    - 200
+    - 300
+    - 400
+  classfication_model:
+    values:
+    - 1
+  uselabel:
+    values:
+    - 1
+  fill_set:
+    values:
+      - fillWithMiddle

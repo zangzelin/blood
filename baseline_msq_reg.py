@@ -39,7 +39,7 @@ def main(args):
     simfunc_use = getattr(simfunc, 'UMAPSimilarity')
     simfunc_npuse = getattr(simfunc, 'UMAPSimilarityNumpy')
     # dm_class = getattr(datasetfunc, args.__dict__['data_name'] + 'DataModule')
-    dm_class = getattr(datasetfunc, 'BlodNoMissingDataModuleReg')
+    dm_class = getattr(datasetfunc, 'BlodNoMissingDataModule')
 
     dataset = dm_class(
         DistanceF=disfunc_use,
@@ -52,20 +52,20 @@ def main(args):
         p1_list = [1, 3, 5, 10, 15, 20]
         p2_list = [10, 20, 30, 50, 70, 100]
     if args.method == 'lightGBM':
-        p1_list = [10, 20, 30, 50, 70, 100]
-        p2_list = [30, 50, 70, 100, 120, 130]
+        p1_list = [21, 26, 31, 26, 41]
+        p2_list = [80, 90, 100, 110, 120, 130]
     if args.method == 'LR':
         p1_list = [0.00001, 0.00005, 0.0001, 0.0002, 0.0005, 0.0007]
         p2_list = [0.6, 0.8, 1.0, 1.2, 1.5, 1.7, 2.0]
     if args.method in ['random_forest', 'gradient_boost']:
-        p1_list = [2, 3, 5, 7, 10, 15]
-        p2_list = [30, 50, 70, 100, 120, 130]
+        p1_list = [2, 3, 4, 5, 6, 7]
+        p2_list = [80, 90, 100, 110, 120, 130]
     if args.method in ['decision_tree', 'extra_tree']:
         p1_list = [2, 3, 5, 7, 10, 15]
         p2_list = [1, 2, 3, 5, 7, 10]
     if args.method == 'adaboost':
-        p1_list = [0.01, 0.05, 0.1, 0.5, 1, 2]
-        p2_list = [30, 50, 70, 100, 120, 130]
+        p1_list = [0.8, 0.9, 1, 2, 5, ]
+        p2_list = [40, 50, 60, 70, 80, 90]
     if args.method == 'svm':
         p1_list = [10, 50, 100, 300, 500, -1]
         p2_list = [0.0001, 0.0005, 0.001, 0.002, 0.003, 0.005]
@@ -96,6 +96,7 @@ def main(args):
     val_label = dataset.labelval.cpu().numpy()
     test_label = dataset.labeltest.cpu().numpy()
 
+    # print(test_label)
     reg = refs[args.method][0]
     reg.fit(train_data, train_label)
 
@@ -114,13 +115,13 @@ def main(args):
 
     log_dict = {
         'train_mse': train_mse,
-        'train_r2_squared': train_r,
+        'train_r': train_r,
         'val_mse': val_mse,
-        'val_r2_squared': val_r,
+        'val_r': val_r,
         'test_mse': test_mse,
-        'test_r2_squared': test_r,
+        'test_r': test_r,
     }
-    return log_dict
+    return log_dict, reg
     # wandb.log()
 
 

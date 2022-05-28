@@ -1,6 +1,6 @@
 program: wrapper_zzl.py
 method: grid
-name: REG_null_v2
+name: REG_fillWithKNN_v2
 metric:
   goal: maximize
   name: best_test_auc
@@ -17,10 +17,10 @@ parameters:
     - 100
   lr:
     values:
-    - 0.002
-    - 0.005
     - 0.01
     - 0.02
+    - 0.03
+    - 0.04
   scale:
     values:
     - 0.1
@@ -29,21 +29,16 @@ parameters:
     - 2
   vs:
     values:
+    - 0.002
     - 0.005
-    - 0.01
-    - 0.02
   weight_decay:
     values:
     - 0.0001
-    - 0.0002
-    - 0.0005
-    - 0.001
   epochs:
     values:
     - 100
     - 150
     - 200
-    - 300
   uselabel:
     values:
     - 1
